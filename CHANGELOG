@@ -1,0 +1,15 @@
+/**
+ * Overview of code changes applied to the Website Baker CMS PostIts module.
+ * 
+ * LICENSE: GNU General Public License 3.0
+ * 
+ * @platform    CMS Websitebaker 2.8.x
+ * @package     postits
+ * @author      cwsoft (http://cwsoft.de)
+ * @version     1.0.0
+ * @copyright   cwsoft
+ * @license     http://www.gnu.org/licenses/gpl.html
+*/
+
+1.0.0: 11-Feb-2012; (cwsoft)
+  - initial release of the Website Baker CMS module postits on GitHub (revive of v0.6.2 incl. fixes from Marcus Jann and forum user marmot)

@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<title>Read Me - PostIts</title>
+<style type="text/css" media="screen"><!--
+body    { 
+font-size: small;
+font-family: Verdana, Helvetica, sans-serif; 
+background-color: #dde4ea; 
+padding: 0 15%;
+}
+
+div.header   { 
+width: 100%; 
+background-color: #fafcff; 
+padding: 5px 15px; 
+border: solid thin #576c7d 
+}
+
+div.header dt { 
+float: left;
+font-weight: bold;
+line-height: 1.5em;
+}
+
+div.header dd { 
+margin-left: 10em; 
+line-height: 1.5em;
+}
+
+h1, h2, h3 {
+font-family: Arial, sans-serif; 
+color: #036;
+}
+
+h1 {
+border-bottom: 2px #CCC solid;
+}
+
+pre.code {
+width: 100%;
+font-family: 'Courier New', Courier, monospace;
+padding: 5px 15px; 
+color: #900;
+background-color: #fafcff; 
+font-size: 95%;
+line-height: 1.4em;
+border: solid thin #576c7d;
+overflow: auto;
+}
+--></style>
+</head>
+
+<body>
+
+<div class="header">
+	<h1>Page module: "PostIts"</h1>
+	<p>Mit Hilfe dieses Moduls können Sie Kurznachrichten an einzelne Benutzer und/oder Gruppen versenden. PostIts werden für den jeweiligen Benutzer nur angezeigt, wenn dieser im Website Baker Backend angemeldet sind (z.B. über das Login-Formular im Frontend).</p>
+
+	<p>Standardmäßig werden PostIts nur im Frontend, nicht aber im Backend von Website Baker angezeigt. Zum Aktivieren der PostIts ist es notwendig, eine Datei im Head-Bereich der index.php des Templates einzubinden.</p>
+  
+	<dl>
+		<dt>@Autor:</dt>
+		<dd>cwsoft (http://cwsoft.de)</dd>
+
+		<dt>@Sprachdatei:</dt>
+		<dd>Deutsche Hilfedatei von Marcus Jann</dd>
+
+		<dt>@Copyright:</dt>
+		<dd>&copy; cwsoft</dd>
+
+		<dt>@Lizenz:</dt>
+		<dd><a href="http://www.gnu.org/licenses/gpl.html" target="_blank">GNU General Public license 3.0</a></dd>
+
+		<dt>@Version:</dt>
+		<dd>1.0.0</dd>
+
+		<dt>@Plattform:</dt>
+		<dd>Website Baker 2.8.x</dd>
+
+		<dt>@Voraussetzungen:</dt>
+		<dd><span style="color: red;">Modifikationen im Template</span></dd>
+	</dl>
+</div>
+
+<h2>A: Installation von "PostIts"</h2>
+<ol>
+	<li>Installieren Sie "postits.zip" über das Website Baker Backend: -&gt; Add-ons -&gt; Modules</i></li>
+	<li>Erstellen Sie eine Seite des Typs Post Its über die Seitenverwaltung.</li>
+</ol>
+
+<h2>B: Aktivierung von "PostIts" im Frontend</h2>
+<p>
+Sie müssen den nachfolgenden Code zwischen die <code>&lt;head&gt; &lt;/head&gt;</code> Tags Ihrer index.php Template-Datei einfügen, damit Postits im Frontend von Website Baker funktioniert.</p>
+
+<pre class="code">
+&lt;?php 
+// write Postits code to the head section
+include_once(WB_PATH . '/modules/postits/postits.inc.php');
+if (function_exists('createPostitsCode')) echo createPostitsCode();
+?&gt;
+</pre>
+
+<h2>C: Aktivierung von "PostIts" im Backend (optional)</h2>
+<p>Wenn Sie PostIts auch im Website Baker Backend verwenden möchten, müssen Sie zwei Website Baker Core-Dateien modifizieren. Bitte machen Sie eine Sicherung dieser Dateien, bevor Sie Änderungen vornehmen!</p>
+
+<p><strong>1. Datei: /framework/class.admin.php</strong><br />
+Suchen Sie nach dem Code <code>require_once(ADMIN_PATH.'/interface/version.php');</code> (ungefähr Zeile 30) und fügen Sie den nachfolgenen Code unter dieser Zeile ein:</p>
+
+<pre class="code">
+// Include Postits include file
+@include_once(WB_PATH . '/modules/postits/postits.inc.php');
+</pre>
+
+Suchen Sie dann nach folgendere Code-Zeile in der gleichen Datei (ca. Zeile 150):
+<pre class="code">
+'BACKEND_MODULE_CSS' =&gt; $this-&gt;register_backend_modfiles('css'),	// adds backend.css
+'BACKEND_MODULE_JS'  =&gt; $this-&gt;register_backend_modfiles('js')	// adds backend.js
+</pre>
+
+und ändern Sie diese in:
+<pre class="code">
+'POSTITS_CODE' =&gt; function_exists('createPostitsCode') ? createPostitsCode() : '',
+'BACKEND_MODULE_CSS' =&gt; $this-&gt;register_backend_modfiles('css'),	// adds backend.css
+'BACKEND_MODULE_JS'  =&gt; $this-&gt;register_backend_modfiles('js')	// adds backend.js
+</pre>
+
+<p><strong>2. Datei: Backend Header Template</strong><br />
+Öffnen Sie: <code>templates/wb_theme/templates/header.htt</code><br />
+(Hinweis: wenn sie das Argos theme verwended, templates/argos_theme/templates/header.htt)</p>
+
+<p>Suchen Sie die nachfolgende Zeile in der Backend Header Template-Datei (ca. Zeile 25):</p>
+<pre class="code">
+{BACKEND_MODULE_JS}
+</pre>
+
+und ändern Sie diese in:
+<pre class="code">
+{BACKEND_MODULE_JS}
+{POSTITS_CODE}
+</pre>
+
+<p>Wenn Sie die angegebenen Schritte abgearbeitet haben, sollten PostIts auch im Backend von Website Baker angezeigt werden.</p> 
+
+<h2>D: "PostIts" verwenden</h2>
+<p>Nach dem Ausführen der obigen Schritte kann "PostIts" verwendet werden. Wechseln Sie in das Website Baker Backend und legen Sie eine neue Seite des Typs "Post Its" an. Wählen Sie die User und/oder Gruppen, denen Sie eine Kurznachricht senden möchten. Verwenden Sie die Mehrfachauswahl, wenn Sie dieselbe Kurznachricht gleichzeitig an verschiedene User versenden wollen. Geben Sie die zu versendende Kurznachricht ein (max. 150 Zeichen) und starten Sie den Versand durch einen Klick auf den Sende-Button.</p>
+
+<p><strong>Anmerkung: </strong>Postits erscheinen nur im Frontend/Backend von Website Baker, wenn der PostIt-Empfänger angemeldet ist.</p> 
+
+<p>Um den Status der Kurznachrichten einzusehen, wechseln Sie im Website Baker Frontend auf die PostIts-Seite (welche Sie wie unter Punkt D beschrieben angelegt haben). Wenn Sie angemeldet sind, werden dort die Nachrichten angezeigt, die noch nicht vom jeweiligen Empfänger gelesen wurden.</p>
+
+<p><strong>Anmerkung: </strong>Es werden nur die Nachrichten angezeigt, die der aktuell angemeldete User verfasst hat.</p>
+
+<h2>E: Voraussetzungen und Einschränkungen</h2>
+<p>Erfordert <strong style="color: red;">Website Baker 2.8</strong> oder höher mit <strong style="color: red;">aktiviertem Javascript</strong>.</p>
+
+<p>Das Aktualisierungsintervall für neue PostIts ist auf 60 Sekunden festgelegt. Das Maximum gleichzeitig angezeigter Kurznachrichten ist auf 99 PostIts limitiert. Als Standard-Ausgabeformat ist die grafische Ausgabe eines PostIt-GIFs festgelegt.</p>
+
+<p>Grundeinstellungen können in der Datei <code>"postits/js/postits.js"</code> geändert werden.</p>
+
+</body>
+</html>

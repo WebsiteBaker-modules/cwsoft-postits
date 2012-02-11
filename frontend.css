@@ -1,0 +1,102 @@
+/*
+ * Page module: PostIts
+ *
+ * This module allows you to send virtual post its to other users.
+ * Requires some modification in the index.php file of the template and frontend login enabled.
+ *
+ * This file contains the CSS definitions for the frontend.
+ * 
+ * LICENSE: GNU General Public License 3.0
+ * 
+ * @platform    CMS Websitebaker 2.8.x
+ * @package     postits
+ * @author      cwsoft (http://cwsoft.de)
+ * @version     1.0.0
+ * @copyright   cwsoft
+ * @license     http://www.gnu.org/licenses/gpl.html
+*/
+
+div.postits {
+	position: absolute;
+	top: 10px;
+	left: 100px;
+	font-family: Verdana,Helvetica, Arial, sans-serif;
+	font-size: small;
+	z-index: 999;
+	margin: 0px;
+	padding: 0px;
+	color: #000;
+}
+
+div.txt {
+	background-color: #FBFCD4;
+	width: 12em;
+	min-height: 10em;
+	border: 1px solid gray;
+}
+
+div.gif {
+	background: url(images/postit_back.gif) no-repeat;
+	width: 150px;
+	height: 165px;
+	border: 0px;
+	padding-top: 25px;
+	padding-left: 10px;
+}
+
+div.postits .header {
+	background-color: #045FB4;
+	color: white;
+	border-bottom: 1px solid gray;
+	width: 100%;
+	font-weight: bold;
+	padding: 0;
+	margin: 0;
+}
+
+div.postits a {
+	height: 10px;
+	width: 10px;
+	background: url(images/close.gif) no-repeat;
+	float: right;
+}
+
+div.postits a.gif {
+	position: relative;
+	top: -14px;
+	left: -22px;	
+}
+
+div.postits a:hover {
+	background: url(images/close_active.gif) no-repeat;
+}
+
+div.postits p {
+	font-size: 80%;
+	margin: 0;
+	padding: 0.3em;
+}
+
+div.postits p.gif {
+	width: 124px;
+}
+
+div.postits p.sendby {
+	margin: 0.3em 0 0 0;
+	font-size: 70%;
+	color: #555;
+	font-style: italic;
+}
+
+th.postits {
+	background-color: #FFDD2F;
+	border-bottom: 1px solid #000;
+	font-weight: bold;
+}
+
+table.postits thead, table.postits thead tr:hover { background-color: #DFE1E5;}
+table.postits td { font-size: 95%; color:#666; line-height: 0.4em;}
+table.postits tr.odd { background-color: #F7F7F7; }
+table.postits tr:hover { background-color: #FFFFE0}
+
+.hide { display: none; }

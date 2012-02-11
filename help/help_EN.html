@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<title>Read Me - PostIts</title>
+<style type="text/css" media="screen"><!--
+body    { 
+font-size: small;
+font-family: Verdana, Helvetica, sans-serif; 
+background-color: #dde4ea; 
+padding: 0 15%;
+}
+
+div.header   { 
+width: 100%; 
+background-color: #fafcff; 
+padding: 5px 15px; 
+border: solid thin #576c7d 
+}
+
+div.header dt { 
+float: left;
+font-weight: bold;
+line-height: 1.5em;
+}
+
+div.header dd { 
+margin-left: 10em; 
+line-height: 1.5em;
+}
+
+h1, h2, h3 {
+font-family: Arial, sans-serif; 
+color: #036;
+}
+
+h1 {
+border-bottom: 2px #CCC solid;
+}
+
+pre.code {
+width: 100%;
+font-family: 'Courier New', Courier, monospace;
+padding: 5px 15px; 
+color: #900;
+background-color: #fafcff; 
+font-size: 95%;
+line-height: 1.4em;
+border: solid thin #576c7d;
+overflow: auto;
+}
+--></style>
+</head>
+
+<body>
+
+<div class="header">
+	<h1>Page module: "PostIts"</h1>
+	<p>This module allows you to send short messages to users and/or groups. PostIts are only shown for users which are loged into the  Website Baker backend. By default PostIts only appear in the frontend, not in the backend of Website Baker. To get PostIts working, one needs to include a file into the head section of the index.php template file.</p>
+	<dl>
+		<dt>@author:</dt>
+		<dd>cwsoft (http://cwsoft.de)</dd>
+
+		<dt>@copyright:</dt>
+		<dd>&copy; cwsoft</dd>
+
+		<dt>@license:</dt>
+		<dd><a href="http://www.gnu.org/licenses/gpl.html" target="_blank">GNU General Public license 3.0</a></dd>
+
+		<dt>@version:</dt>
+		<dd>1.0.0</dd>
+
+		<dt>@platform:</dt>
+		<dd>Website Baker 2.8.x</dd>
+
+		<dt>@requires:</dt>
+		<dd><span style="color: red;">some modification in the template</span></dd>
+	</dl>
+</div>
+
+<h2>A: Installing "PostIts"</h2>
+<ol>
+	<li>Install the "postits.zip" file via the Website Baker Backend: -&gt; Add-ons -&gt; Modules</i></li>
+	<li>create a page of type Postits via the pages section</li>
+</ol>
+
+<h2>B: Make "PostIts" working in the Frontend</h2>
+<p>
+You need to add the following code between the <code>&lt;head&gt; &lt;/head&gt;</code> tags of your index.php template file to get Postits working in the Frontend of Website Baker.</p>
+
+<pre class="code">
+&lt;?php 
+// write Postits code to the head section
+include_once(WB_PATH . '/modules/postits/postits.inc.php');
+if (function_exists('createPostitsCode')) echo createPostitsCode();
+?&gt;
+</pre>
+
+<h2>C: Make "PostIts" working in the Backend (optional)</h2>
+<p>If you want to use Postits also in the Website Baker backend, you have to modify two Website Baker core files. Remeber to backup the core files before applying the changes.</p>
+
+<p><strong>File 1: /framework/class.admin.php</strong><br />
+Search for the code <code>require_once(ADMIN_PATH.'/interface/version.php');</code> (around line 30) and add the following code below this line:</p>
+
+<pre class="code">
+// Include Postits include file
+@include_once(WB_PATH . '/modules/postits/postits.inc.php');
+</pre>
+
+Next search for the following code line in the same file (around line 150):
+<pre class="code">
+'BACKEND_MODULE_CSS' =&gt; $this-&gt;register_backend_modfiles('css'),	// adds backend.css
+'BACKEND_MODULE_JS'  =&gt; $this-&gt;register_backend_modfiles('js')	// adds backend.js
+</pre>
+
+and change it into:
+<pre class="code">
+'POSTITS_CODE' =&gt; function_exists('createPostitsCode') ? createPostitsCode() : '',
+'BACKEND_MODULE_CSS' =&gt; $this-&gt;register_backend_modfiles('css'),	// adds backend.css
+'BACKEND_MODULE_JS'  =&gt; $this-&gt;register_backend_modfiles('js')	// adds backend.js
+</pre>
+
+<p><strong>File 2: Backend Header Template</strong><br />
+Open: <code>templates/wb_theme/templates/header.htt</code><br />
+(Note: in case of the argos theme, edit: <code>templates/argos_themes/templates/header.html</code>)</p>
+
+<p>Search for the following lines in the backend header template file (around line 25):</p>
+<pre class="code">
+{BACKEND_MODULE_CSS}
+{BACKEND_MODULE_JS}
+</pre>
+
+and change it into:
+<pre class="code">
+{BACKEND_MODULE_CSS}
+{BACKEND_MODULE_JS}
+{POSTITS_CODE}
+</pre>
+
+<p>If you followed the steps above, PostIts will also show up in the backend of Website Baker.</p>
+
+<h2>D: Using "PostIts"</h2>
+<p>If you followed the steps above, PostIts is ready for use. Go to the Website Baker Backend and create a new page of type Post Its. Specify the users and/or groups you want to send a Postit. Make use of multi-selection to send the same message to several users at the same time. Type in a message (max. 150 characters) and press the submit button.</p>
+
+<p><strong>Note: </strong>Postits only appear in the frontend/backend of Website Baker, if the PostIt recipient is loged in.</p> 
+
+<p>You can view the status of your PostIts by going to the Postits page in the frontend. If you are loged in, you can view the messages not yet read by the recipients.</p>
+
+<p><strong>Note: </strong>Only messages written by the user currently loged in will be displayed.</p>
+
+<h2>E: Requirements and Limitations</h2>
+<p>Requires <strong style="color: red;">Javascript enabled</strong> and <strong style="color: red;">Website Baker 2.8</strong> or higher.</p>
+
+<p>The default refresh intervall for PostIts is set to 60 seconds by default. The maximum number of Postits which are shown simultaniously is limited to 99 by default. The PostIts design is set to display a post its graphic by default.</p>
+
+<p>Default settings can be changed in <code>"postits/js/postits.js"</code>. <!-- OUTDATED (mj) When using more than 5 Postits at one page, one needs to specify CSS values for position and background color for each new Postit Id in <code>"postits/frontend.css"</code>. --></p>
+
+</body>
+</html>
