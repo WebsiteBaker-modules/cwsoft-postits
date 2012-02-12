@@ -12,7 +12,7 @@
  * @platform    CMS Websitebaker 2.8.x
  * @package     postits
  * @author      cwsoft (http://cwsoft.de)
- * @version     1.0.0
+ * @version     1.1.0
  * @copyright   cwsoft
  * @license     http://www.gnu.org/licenses/gpl.html
 */
@@ -23,7 +23,7 @@ if (!(isset($_POST['action']) && $_POST['action'] == 'delete' &&
 	return false;
 
 // make sanity check of referer URL
-require_once('../../config.php');
+require_once('../../../config.php');
 $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 
 	(isset($HTTP_SERVER_VARS['HTTP_REFERER']) ? $HTTP_SERVER_VARS['HTTP_REFERER'] : '');
 
@@ -31,7 +31,7 @@ $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] :
 if ($referer != '' && (!(strpos($referer, WB_URL) !== false || strpos($referer, WB_URL) !== false))) return false;
 
 // check if user has loged in
-require_once('../../framework/class.admin.php');
+require_once('../../../framework/class.admin.php');
 $admin = new admin('Pages', 'start', false, false);
 if (!$admin->is_authenticated()) return false;
 
@@ -44,5 +44,3 @@ $user_id = $admin->add_slashes((int) $admin->get_session('USER_ID'));
 $sql = "DELETE FROM `$table` WHERE `id` = '" . $_POST['postit_id'] . "'";
 $database->query($sql);
 echo ($database->is_error()) ? '{"status": "error"}' : '{"status": "ok"}';
-
-?>

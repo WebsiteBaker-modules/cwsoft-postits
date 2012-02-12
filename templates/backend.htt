@@ -1,10 +1,6 @@
 <div id="mod_postits">
 
 <h2>{HEADING_BACKEND}</h2>
-<div class="help_file">
-	<a href="{URL_HELP}" target="_blank">[ {TXT_HELP} ]</a>
-</div>
-
 <p>{TXT_SEND_POSTIT}</p>
 
 <form name="submit_postit" method="post" action="{URL_SUBMIT}">

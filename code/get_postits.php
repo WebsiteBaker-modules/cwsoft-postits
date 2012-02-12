@@ -12,7 +12,7 @@
  * @platform    CMS Websitebaker 2.8.x
  * @package     postits
  * @author      cwsoft (http://cwsoft.de)
- * @version     1.0.0
+ * @version     1.1.0
  * @copyright   cwsoft
  * @license     http://www.gnu.org/licenses/gpl.html
 */
@@ -22,7 +22,7 @@ if (!(isset($_POST['action']) && ($_POST['action'] == 'check_postits') && isset(
 	return false;
 
 // make sanity check of referer URL
-require_once('../../config.php');
+require_once('../../../config.php');
 $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 
 	(isset($HTTP_SERVER_VARS['HTTP_REFERER']) ? $HTTP_SERVER_VARS['HTTP_REFERER'] : '');
 
@@ -30,13 +30,13 @@ $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] :
 if ($referer != '' && (!(strpos($referer, WB_URL) !== false || strpos($referer, WB_URL) !== false))) return false;
 
 // check if user has loged in
-require_once('../../framework/class.admin.php');
+require_once('../../../framework/class.admin.php');
 $admin = new admin('Pages', 'start', false, false);
 if (!$admin->is_authenticated()) return false;
 
 // load module language file
-$lang = (dirname(__FILE__)) . '/languages/' . LANGUAGE . '.php';
-require_once(!file_exists($lang) ? (dirname(__FILE__)) . '/languages/EN.php' : $lang );
+$lang = (dirname(__FILE__)) . '/../languages/' . LANGUAGE . '.php';
+require_once(!file_exists($lang) ? (dirname(__FILE__)) . '/../languages/EN.php' : $lang );
 
 /**
  * Check if Postits exists for the current user
@@ -60,5 +60,3 @@ while ($row = $results->fetchRow()) {
 
 // output JSON object string
 echo '{"Data": [' . substr($json_postit, 0, -2) . ']}';
-
-?>

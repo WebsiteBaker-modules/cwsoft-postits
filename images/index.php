@@ -9,15 +9,13 @@
  * 
  * LICENSE: GNU General Public License 3.0
  * 
- * @author		Christian Sommer (doc), Marcus Jann
- * @copyright	(c) 2006-2009
- * @license		http://www.gnu.org/licenses/gpl.html
- * @version		0.61
- * @platform	Website Baker 2.8+
- *
+ * @platform    CMS Websitebaker 2.8.x
+ * @package     postits
+ * @author      cwsoft (http://cwsoft.de)
+ * @version     1.1.0
+ * @copyright   cwsoft
+ * @license     http://www.gnu.org/licenses/gpl.html
 */
 
-// prevent directory listing
-header('Location: ../../../index.php');
-
-?>
+// prevent this file from being accessed directly
+if(defined('WB_PATH') == false) { exit("Cannot access this file directly"); }

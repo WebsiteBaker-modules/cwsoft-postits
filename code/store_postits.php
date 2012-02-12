@@ -12,7 +12,7 @@
  * @platform    CMS Websitebaker 2.8.x
  * @package     postits
  * @author      cwsoft (http://cwsoft.de)
- * @version     1.0.0
+ * @version     1.1.0
  * @copyright   cwsoft
  * @license     http://www.gnu.org/licenses/gpl.html
 */
@@ -21,7 +21,7 @@
 if (!(isset($_POST['page_id']) && is_numeric($_POST['page_id']))) die(header('Location: ../../index.php'));
 
 // include config.php file and admin class
-require_once('../../config.php');
+require_once('../../../config.php');
 
 // make sanity check of referer URL
 $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 
@@ -29,21 +29,21 @@ $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] :
 
 // if referer is set check it
 if ($referer != '' && (!(strpos($referer, WB_URL) !== false || strpos($referer, WB_URL) !== false))) 
-	die(header('Location: ../../index.php'));
+	die(header('Location: ../../../index.php'));
 
 // check if user has permissions to access the Postits module
-require_once('../../framework/class.admin.php');
+require_once('../../../framework/class.admin.php');
 $admin = new admin('Modules', 'module_view', false, false);
 if (!($admin->is_authenticated() && $admin->get_permission('postits', 'module'))) 
-	die(header('Location: ../../index.php'));
+	die(header('Location: ../../../index.php'));
 
 // create admin object with backend header and define back url for error messages
 $admin = new admin('Pages', 'pages_modify', true, false);
 $url_back = ADMIN_URL . '/pages/modify.php?page_id=' . (int) $_POST['page_id'];
 
 // load module language file
-$lang = (dirname(__FILE__)) . '/languages/' . LANGUAGE . '.php';
-require_once(!file_exists($lang) ? (dirname(__FILE__)) . '/languages/EN.php' : $lang );
+$lang = (dirname(__FILE__)) . '/../languages/' . LANGUAGE . '.php';
+require_once(!file_exists($lang) ? (dirname(__FILE__)) . '/../languages/EN.php' : $lang );
 
 // check if recipients were submitted
 if (!((isset($_POST['users']) && count($_POST['users']) > 0) || (isset($_POST['groups']) && count($_POST['groups']) >0)))
@@ -118,5 +118,3 @@ if ($database->is_error()) {
 } else {
 	$admin->print_success($LANG[1]['TXT_SEND_OK'], $url_back);
 }
-
-?>

@@ -4,7 +4,7 @@
  * This module allows you to send virtual post its to other users.
  * Requires some modification in the index.php file of the template and frontend login enabled.
  *
- * This file contains the CSS definitions for the backend.
+ * This file contains the Postits CSS definitions for frontend and backend.
  * 
  * LICENSE: GNU General Public License 3.0
  * 
@@ -16,16 +16,18 @@
  * @license     http://www.gnu.org/licenses/gpl.html
 */
 
+/**
+ * CSS definitions for the PostIts notes
+ */
 div.postits {
 	position: absolute;
 	top: 10px;
 	left: 100px;
 	font-family: Verdana,Helvetica, Arial, sans-serif;
 	font-size: small;
-	margin: 0;
 	z-index: 999;
-	padding: 0;
-	margin: 0;
+	margin: 0px;
+	padding: 0px;
 	color: #000;
 }
 
@@ -33,15 +35,16 @@ div.txt {
 	background-color: #FBFCD4;
 	width: 12em;
 	min-height: 10em;
-	border: 1px solid gray;	
+	border: 1px solid gray;
 }
 
 div.gif {
-	background: url(images/postit_back.gif) no-repeat;
+	background: url(../images/postit_back.gif) no-repeat;
 	width: 150px;
 	height: 165px;
 	border: 0px;
-	padding: 25px 10px 17px 10px;
+	padding-top: 25px;
+	padding-left: 10px;
 }
 
 div.postits .header {
@@ -57,7 +60,7 @@ div.postits .header {
 div.postits a {
 	height: 10px;
 	width: 10px;
-	background: url(images/close.gif) no-repeat;
+	background: url(../images/close.gif) no-repeat;
 	float: right;
 }
 
@@ -68,13 +71,17 @@ div.postits a.gif {
 }
 
 div.postits a:hover {
-	background: url(images/close_active.gif) no-repeat;
+	background: url(../images/close_active.gif) no-repeat;
 }
 
 div.postits p {
 	font-size: 80%;
 	margin: 0;
 	padding: 0.3em;
+}
+
+div.postits p.gif {
+	width: 124px;
 }
 
 div.postits p.sendby {
@@ -84,9 +91,18 @@ div.postits p.sendby {
 	font-style: italic;
 }
 
-div.help_file {
-	font-size: x-small;
-	width: 710px;
-	text-align: right;
-	margin: -2.5em 0 1em 0;
+/**
+ * CSS definitions used on the postits page (frontend)
+ */
+th.postits {
+	background-color: #FFDD2F;
+	border-bottom: 1px solid #000;
+	font-weight: bold;
 }
+
+table.postits thead, table.postits thead tr:hover { background-color: #DFE1E5;}
+table.postits td { font-size: 95%; color:#666; line-height: 0.4em;}
+table.postits tr.odd { background-color: #F7F7F7; }
+table.postits tr:hover { background-color: #FFFFE0}
+
+.hide { display: none; }

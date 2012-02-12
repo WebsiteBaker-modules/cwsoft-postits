@@ -12,20 +12,20 @@
  * @platform    CMS Websitebaker 2.8.x
  * @package     postits
  * @author      cwsoft (http://cwsoft.de)
- * @version     1.0.0
+ * @version     1.1.0
  * @copyright   cwsoft
  * @license     http://www.gnu.org/licenses/gpl.html
 */
 
 // prevent this file from being accessed directly
-if (!defined('WB_PATH')) die(header('Location: ../../index.php'));
+if(defined('WB_PATH') == false) { exit("Cannot access this file directly"); }
 
 $PRECHECK = array();
 
 /*
  * Specify required Website Baker version
  */
-$PRECHECK['WB_VERSION'] = array('VERSION' => '2.7', 'OPERATOR' => '>=');
+$PRECHECK['WB_VERSION'] = array('VERSION' => '2.8', 'OPERATOR' => '>=');
 
 /*
  * Check if the jQuery folder exists in /include
@@ -37,5 +37,3 @@ $actual = ($status) ? $TEXT['INSTALLED'] : $TEXT['NOT_INSTALLED'];
 $PRECHECK['CUSTOM_CHECKS'] = array(
 	'jQuery' => array('REQUIRED' => $required, 'ACTUAL' => $actual, 'STATUS' => $status)
 );
-
-?>

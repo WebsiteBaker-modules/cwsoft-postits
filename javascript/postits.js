@@ -11,7 +11,7 @@
  * @platform    CMS Websitebaker 2.8.x
  * @package     postits
  * @author      cwsoft (http://cwsoft.de)
- * @version     1.0.0
+ * @version     1.1.0
  * @copyright   cwsoft
  * @license     http://www.gnu.org/licenses/gpl.html
 */
@@ -46,7 +46,7 @@ function checkForPostits()
 	// create Ajax call to check if Postits are available
 	jq.ajax({
 		type: 'POST',
-		url: WB_URL + '/modules/postits/get_postits.php',
+		url: WB_URL + '/modules/postits/code/get_postits.php',
 		data: 'action=check_postits&show=' + Postits.ShowMax,
 		dataType: 'json',
 		
@@ -117,7 +117,7 @@ function removePostits(id)
 	// create Ajax call to delete Postit from database
 	jq.ajax({
 		type: 'POST',
-		url: WB_URL + '/modules/postits/delete_postits.php',
+		url: WB_URL + '/modules/postits/code/delete_postits.php',
 		data: 'action=delete&postit_id=' + id + '&show=' + Postits.ShowMax,
 		dataType: 'json',
 		

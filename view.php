@@ -12,31 +12,34 @@
  * @platform    CMS Websitebaker 2.8.x
  * @package     postits
  * @author      cwsoft (http://cwsoft.de)
- * @version     1.0.0
+ * @version     1.1.0
  * @copyright   cwsoft
  * @license     http://www.gnu.org/licenses/gpl.html
 */
 
 // prevent this file from being accessed directly
-if (!defined('WB_PATH')) die(header('Location: ../../index.php'));
+if(defined('WB_PATH') == false) { exit("Cannot access this file directly"); }
 
+/**
+ * Load module language file and set-up template
+ */
 // load module language file
-$lang = (dirname(__FILE__)) . '/languages/' . LANGUAGE . '.php';
-require_once(!file_exists($lang) ? (dirname(__FILE__)) . '/languages/EN.php' : $lang );
+$lang_file = (dirname(__FILE__)) . '/languages/' . LANGUAGE . '.php';
+require_once(!file_exists($lang_file) ? (dirname(__FILE__)) . '/languages/EN.php' : $lang_file);
 
 // include template class and set template directory
 require_once(WB_PATH . '/include/phplib/template.inc');
-$tpl = new Template(dirname(__FILE__) . '/htt');
+$tpl = new Template(dirname(__FILE__) . '/templates');
 $tpl->set_file('page', 'frontend.htt');
 
-/**
- * Output template
- */
 // replace template placeholder with text from language file
 foreach($LANG[0] as $key => $value) {
 	$tpl->set_var($key, $value);
 }
 
+/**
+ * Output template
+ */
 // check if user is logged in
 if (!isset($_SESSION['USER_ID'])) {
 	// remove/hide template elements not required
@@ -78,5 +81,3 @@ if (!isset($_SESSION['USER_ID'])) {
 
 // ouput the final template
 $tpl->pparse('output', 'page');
-
-?>

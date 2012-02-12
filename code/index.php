@@ -12,12 +12,10 @@
  * @platform    CMS Websitebaker 2.8.x
  * @package     postits
  * @author      cwsoft (http://cwsoft.de)
- * @version     1.0.0
+ * @version     1.1.0
  * @copyright   cwsoft
  * @license     http://www.gnu.org/licenses/gpl.html
 */
 
-// prevent directory listing
-header('Location: ../../../index.php');
-
-?>
+// prevent this file from being accessed directly
+if(defined('WB_PATH') == false) { exit("Cannot access this file directly"); }
