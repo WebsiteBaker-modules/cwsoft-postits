@@ -18,15 +18,13 @@ Due to massive changes of the WebsiteBaker jQuery integration between WebsiteBak
 
 The installation steps are explained below:
 
-1. download the latest archive from [GitHub](https://github.com/cwsoft/wb-postits/downloads)
-2. extract the downloaded archive on your local computer and unzip it e.g. with [7-zip](http://7-zip.org)
-3. open the extracted archive and search for a file named ***wb-postits-installer.zip*** inside
-4. log into your WebsiteBaker backend and go to the Add-ons / Modules section
-5. install the ***wb-postits-installer.zip*** file with the WebsiteBaker installer
-6. now go to the pages section and create a new page of type ***PostIts***
-7. select a user and group (admin) and enter a test message for your first Postit
-8. press the send postits button 
-9. visit the Postits page on the frontend and check if PostIts are already shown
+1. download latest archive from [GitHub](https://github.com/cwsoft/wb-postits/raw/master/wb-postits-installer.zip)
+2. log into your WebsiteBaker backend and go to the Add-ons / Modules section
+3. install the downloaded zip archive via the WebsiteBaker installer
+4. now go to the pages section and create a new page of type ***PostIts***
+5. select a user and group (admin) and enter a test message for your first Postit
+6. press the send postits button 
+7. visit the Postits page on the frontend and check if PostIts are already shown
 
 ***Note:*** PostIts will only be displayed at your frontend and/or backend, if you add some lines to the frontend and/or template file. Sorry for that but WebsiteBaker does not yet have a nice API, which would allow module authors to register and load required module files automatically as known from other CMS systems, but this will be fixed with WB 2.9 (or latest WB 3.0) :-)
 
