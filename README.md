@@ -58,25 +58,21 @@ The PostIts should now work on the frontend part of WebsiteBaker. Hust hit F5 or
 If you want to show PostIts also in the backend part of WebsiteBaker, you need to modify the template file ***header.htt*** of your backend theme. If you are using the default WebsiteBaker backend theme of WB 2.8.2, the file is located at */templates/wb_theme/templates/header.htt*. Open the file with the Addon File Editor and search for the following lines at the top of the file.
 
 <pre>
-< script src="{WB_URL}/include/jquery/jquery-min.js" type="text/javascript"></script>
-< script src="{WB_URL}/include/jquery/jquery-insert.js" type="text/javascript"></script>
-< script src="{WB_URL}/include/jquery/jquery-include.js" type="text/javascript"></script>
+&lt;script src="{WB_URL}/include/jquery/jquery-min.js" type="text/javascript"></script>
+&lt;script src="{WB_URL}/include/jquery/jquery-insert.js" type="text/javascript"></script>
+&lt;script src="{WB_URL}/include/jquery/jquery-include.js" type="text/javascript"></script>
 </pre>
 
 and change it as follows:
 
 <pre>
-< script src="{WB_URL}/include/jquery/jquery-min.js" type="text/javascript"></script>
-< script src="{WB_URL}/include/jquery/jquery-ui-min.js" type="text/javascript"></script>
-< script src="{WB_URL}/include/jquery/jquery-insert.js" type="text/javascript"></script>
-< script src="{WB_URL}/include/jquery/jquery-include.js" type="text/javascript"></script>
-< link href="{WB_URL}/modules/postits/css/postits.css" rel="stylesheet" type="text/css" />
-< script src="{WB_URL}/modules/postits/javascript/postits.js" type="text/javascript"></script>
+&lt;script src="{WB_URL}/include/jquery/jquery-min.js" type="text/javascript"></script>
+&lt;script src="{WB_URL}/include/jquery/jquery-ui-min.js" type="text/javascript"></script>
+&lt;script src="{WB_URL}/include/jquery/jquery-insert.js" type="text/javascript"></script>
+&lt;script src="{WB_URL}/include/jquery/jquery-include.js" type="text/javascript"></script>
+&lt;link href="{WB_URL}/modules/postits/css/postits.css" rel="stylesheet" type="text/css" />
+&lt;script src="{WB_URL}/modules/postits/javascript/postits.js" type="text/javascript"></script>
 </pre>
-
->   ***Note:*** DON't enter the space between `<` and `script` as shown in the code above. 
->   This is required to show the README.md at GitHub correctly and would break your code
-
 
 The PostIts should now also appear in the backend part of WebsiteBaker.
 
