@@ -3,7 +3,7 @@
 The PostIts module allows you to send short text messages (150 characters) to other users or groups via the [WebsiteBaker CMS](http://www.websitebaker2.org) backend. The PostIts notes are automatically displayed at the frontend and/or backend, once the recipient logs into WebsiteBaker. The sender can check whether his note was already read by the recipient.
 
 ## Download
-The latest stable PostIts [installation package](https://github.com/cwsoft/wb-postits/raw/master/wb-postits-installer.zip) for the WebsiteBaker CMS is included in the GitHub master branch. Older versions are available as [archives](https://github.com/cwsoft/wb-postits/tags), but are ***NOT*** directly installable in the WebsiteBaker CMS. The history of the PostIts module can be tracked via [GitHub](https://github.com/cwsoft/wb-postits).
+The released stable `PostIts` installation packages for the WebsiteBaker CMS can be found in the [GitHub download area](https://github.com/cwsoft/wb-postits/downloads). It is recommended to install/update to the latest available version listed. Older versions are provided for compatibility reasons with older WebsiteBaker versions and may contain bugs or security issues. The development history of the PostIts module can be tracked via [GitHub](https://github.com/cwsoft/wb-postits).
 
 ## License
 The Postits module is licensed under the [GNU General Public License (GPL) v3.0](http://www.gnu.org/licenses/gpl-3.0.html).
@@ -18,7 +18,7 @@ The minimum requirements to get PostIts running are as follows:
 
 ## Installation
 
-1. download latest stable [WebsiteBaker installation package](https://github.com/cwsoft/wb-postits/raw/master/wb-postits-installer.zip)
+1. download [PostIts v1.1.0](https://github.com/downloads/cwsoft/wb-postits/cwsoft-wb-postits-v1.1.0.zip) WebsiteBaker installation package
 2. log into your WebsiteBaker backend and go to the `Add-ons/Modules` section
 3. install the downloaded zip archive via the WebsiteBaker installer
 4. go to the pages section and create a new page of type `PostIts`
@@ -32,20 +32,18 @@ If you visit the PostIt page on the frontend and find a JavaScript message, you 
 
 Open the file `index.php` with the Addon File Editor and search for the following lines.
 
-<pre>
-if (function_exists('register_frontend_modfiles')) {
-    register_frontend_modfiles('css');
-    register_frontend_modfiles('js');
-</pre>
+	if (function_exists('register_frontend_modfiles')) {
+		register_frontend_modfiles('css');
+		register_frontend_modfiles('js');
+	}
 
 Change the lines above as follows:
 
-<pre>
-if (function_exists('register_frontend_modfiles')) {
-    register_frontend_modfiles('css');
-    register_frontend_modfiles('jquery');
-    register_frontend_modfiles('js');
-</pre>
+	if (function_exists('register_frontend_modfiles')) {
+		register_frontend_modfiles('css');
+		register_frontend_modfiles('jquery');
+		register_frontend_modfiles('js');
+	}
 
 PostIts now appear in the frontend of your WebsiteBaker installation once the recipient has loged in. Reload the frontend view in your browser (F5) to see if it works. If it doesn't work, check that you added the code above to the frontend template defined via WebsiteBaker and you made no typos.
 
