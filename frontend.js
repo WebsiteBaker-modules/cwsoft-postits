@@ -9,31 +9,31 @@
  * 
  * LICENSE: GNU General Public License 3.0
  * 
- * @platform    CMS Websitebaker 2.8.x
+ * @platform    CMS WebsiteBaker 2.8.x
  * @package     postits
  * @author      cwsoft (http://cwsoft.de)
- * @version     1.1.0
+ * @version     1.2.0
  * @copyright   cwsoft
  * @license     http://www.gnu.org/licenses/gpl.html
 */
 
-// check if jQuery is loaded via register_frontend_modfiles function
-if (typeof jQuery == 'undefined' || typeof(WB_URL) == "undefined") {
+// display message if jQuery is not loaded via register_frontend_modfiles
+if (typeof jQuery == 'undefined' || typeof(WB_URL) == "undefined" || typeof(Postits) == "undefined") {
 	// create a message to be displayed to the user
-	msg = "Uups, your template is not yet ready to display PostIts on the frontend.";
-	msg += "\nPlease add the code below inside the <head> </head> section of your 'index.php' template file to get Postits running.";
-	msg += "\n\n<?php\n    // automatically include optional WB module files (frontend.css, frontend.js)";
+	msg = "Sorry, your template is not yet ready to use the PostIts module.";
+	msg += "\nEnsure the code below exists within the </head></head> section of your frontend template 'index.php' file.";
+	msg += "\nIt is important to keep the exact order of code lines as shown below.";
+	msg += "\n\n<?php";
 	msg += "\n    if (function_exists('register_frontend_modfiles')) {";
 	msg += "\n        register_frontend_modfiles('css');";
 	msg += "\n        register_frontend_modfiles('jquery');";
+	msg += "\n        // ensure PostIts show up on all frontend pages";
+	msg += "\n        echo '<script src=\"' . WB_URL . '/modules/postits/javascript/postits.js\" type=\"text/javascript\"></script>';";
 	msg += "\n        register_frontend_modfiles('js');"
 	msg += "\n    }\n?>";
+	msg += "\n\nTip: Template modifications can be easily done with the WebsiteBaker admin tool AFE.";
+	msg	+= "\nDownload AFE: https://github.com/cwsoft/wb-addon-file-editor#readme.";
 	
-	// output status message so user is aware that he needs to modify his template to get Postits displayed
+	// output status message so user is aware that he needs to modify his template
 	alert(msg);
-
-} else {
-	// jQuery loaded and WB_URL defined, so include Postits javascript code
-	$.getScript(WB_URL + "/modules/postits/javascript/postits.js", function(){
-	});
-}
+} 
