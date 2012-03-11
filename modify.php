@@ -22,17 +22,28 @@ if (defined('WB_PATH') == false) {
 	exit("Cannot access this file directly");
 }
 
-/**
- * Load module language file and set-up template
- */
 // load module language file
-$lang_file = (dirname(__FILE__)) . '/languages/' . LANGUAGE . '.php';
-require_once(!file_exists($lang_file) ? (dirname(__FILE__)) . '/languages/EN.php' : $lang_file);
+$lang = dirname(__FILE__) . '/languages/' . basename(LANGUAGE) . '.php';
+require_once (! file_exists($lang) ? dirname(__FILE__) . '/languages/EN.php' : $lang);
 
-// include template class and set template directory
+/**
+ * Create template object and configure it
+ */
 require_once(WB_PATH . '/include/phplib/template.inc');
 $tpl = new Template(dirname(__FILE__) . '/templates');
+
+// configure handling of unknown {variables} (remove:=default, keep, comment)
+$tpl->set_unknowns('keep');
+
+// configure debug mode (0:= default, 1:=variable assignments, 2:=calls to get variable, 4:=show internals)
+$tpl->debug = 0;
+
+// include template files
 $tpl->set_file('page', 'backend.htt');
+
+// define required template blocks
+$tpl->set_block('page', 'unread_postits_list_block', 'unread_postits_list_block_handle');
+$tpl->set_block('page', 'unread_postits_block', 'unread_postits_block_handle');
 
 // replace template placeholder with text from language file
 foreach($LANG['POSTITS'] as $key => $value) {
@@ -40,7 +51,42 @@ foreach($LANG['POSTITS'] as $key => $value) {
 }
 
 /**
- * Send Postits
+ * Prepare the Postits status part of the template 
+ */
+// extract Postits sent by the logged in user which are not yet read by the recipients
+$table = TABLE_PREFIX . 'mod_postits';
+$sql = "SELECT * FROM `$table` WHERE `sender_id`='" . $admin->add_slashes((int) $_SESSION['USER_ID']) . "' AND `viewed`='0' ORDER BY `id` ASC";
+$results = $database->query($sql);   
+
+if ($results && $results->numRows() > 0) {
+	// remove/hide template elements not required and add new block
+	$tpl->set_var('TXT_ALL_POSTS_READ', '');
+
+	// display all unviewed messages sent by the user
+	$count = 0;
+	while($row = $results->fetchRow()) {
+		$tpl->set_var(array(
+			'CLASS_ODD'			=> ($count % 2 != 0) ? 'class="odd"' : '',
+			'POSTED_WHEN'		=> date($LANG['POSTITS']['DATE_FORMAT'], $row['posted_when']),
+			'RECIPIENT_NAME'	=> $row['recipient_name'],
+			'MESSAGE'			=> substr($row['message'], 0, 40) . (strlen($row['message']) > 39 ? ' ...' : '')
+		));
+		$count++;
+		
+		// add unread postits in append mode
+		$tpl->parse('unread_postits_list_block_handle', 'unread_postits_list_block', true);
+	}
+	// add the unread postits block
+	$tpl->parse('unread_postits_block_handle', 'unread_postits_block', false);
+
+} else {
+	// no unviewed posts available (remove template elements not required)
+	$tpl->set_var('unread_postits_block_handle', '');
+	$tpl->set_var('TXT_UNREAD_POSTS', '');
+}
+
+/**
+ * Prepare the submit Postits part of the template 
  */
 // fetch registered users from database
 $table = TABLE_PREFIX . 'users';

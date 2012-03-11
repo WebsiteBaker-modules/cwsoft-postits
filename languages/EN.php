@@ -54,7 +54,7 @@ $LANG['POSTITS'] = array(
 	'TXT_MESSAGE_MISSING'   => 'No message specified.',
 	'TXT_SEND_SUCCESS'      => 'Postits successfully submitted.',
 	'TXT_SEND_FAILED'       => 'Unable to submit your Postits.',
-	'TXT_USAGE'             => 'To send news Postits, select the recipients from the users and/or groups list. Then type a short message (max. 150 chars.) into the text field and press the submit button.',
+	'TXT_USAGE'             => 'To send new Postits, select the recipients from the users and/or groups list. Then type a short message (max. 150 chars.) into the text field and press the submit button.',
 	'TXT_ERROR'             => 'Error while accessing database.',
 	
 	// date format
