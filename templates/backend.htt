@@ -4,7 +4,7 @@
 	{TXT_ALL_POSTS_READ}
 
 	<!-- BEGIN unread_postits_block -->
-		<table class="postits">
+		<table>
 			<thead>
 				<tr>
 					<th>{TXT_RECIPIENT}</th>
@@ -15,7 +15,7 @@
 			
 			<tbody>
 				<!-- BEGIN unread_postits_list_block -->
-					<tr {CLASS_ODD}>
+					<tr>
 						<td>{RECIPIENT_NAME}</td>
 						<td>{POSTED_WHEN}</td>
 						<td>{MESSAGE}</td>
@@ -25,41 +25,39 @@
 		</table>	
 	<!-- END unread_postits_block -->
 	
-	<br />
 	<h2>{TXT_SUBMIT_POSTITS}</h2>
-	{TXT_USAGE}
-		
 	<form name="submit_postit" method="post" action="{URL_SUBMIT}">
 		<input type="hidden" name="page_id" value="{PAGE_ID}" />
 
-		<table cellpadding="0" cellspacing="0" width="98%">
-			<tr>
-				<th width="30%">{TXT_RECIPIENT}-{TXT_USER}:</th>
-				<th width="30%">{TXT_RECIPIENT}-{TXT_GROUP}:</th>
-				<th width="38%">{TXT_MESSAGE}:</th>
-			</tr>
-	
-			<tr>
-				<td>
-					<select name="users[]" size="12" style="width: 200px;" multiple="multiple">
-						{OPTION_USER_NAMES}
-					</select>
-				</td>
-				<td>
-					<select name="groups[]" size="12" style="width: 200px;" multiple="multiple">
-						{OPTION_GROUP_NAMES}
-					</select>
-				</td>
-				<td>
-					<textarea name="message" rows="13" cols="40" maxlenght="150"></textarea>
-				</td>
-			</tr>
+		<fieldset>
+			<legend>{TXT_RECIPIENT}</legend>
+			<p>{TXT_SELECT_RECIPIENTS}</p>
+			
+			<div class="select">
+				<label for="users" accesskey="u">{TXT_USER}: </label>
+				<select id="users" name="users[]" size="5" multiple="multiple">
+					{OPTION_USER_NAMES}
+				</select>
+			</div>
+			
+			<div class="select">
+				<label for="groups" accesskey="g">{TXT_GROUP}: </label>
+				<select id="groups" name="groups[]" size="5" multiple="multiple">
+					{OPTION_GROUP_NAMES}
+				</select>
+			</div>
+		</fieldset>		
 
-			<tr>
-				<td colspan="3">
-					<input type="submit" name="send_postit" value="{TXT_SUBMIT}">
-				</td>
-			</tr>
-		</table>
+		<fieldset>
+			<legend>{TXT_MESSAGE}</legend>
+			<p>{TXT_ENTER_MESSAGE}</p>
+
+			<div class="message">
+				<label for="message" accesskey="m">{TXT_MESSAGE}: </label>
+				<textarea id="message" name="message" rows="13" cols="40"></textarea>
+			</div>
+		</fieldset>		
+		
+		<button type="submit">{TXT_SUBMIT}</button>
 	</form>	
 </div>

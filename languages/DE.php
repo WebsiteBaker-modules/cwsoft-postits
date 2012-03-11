@@ -36,7 +36,7 @@ $LANG['POSTITS'] = array(
 	// unread Postits
 	'TXT_SUBMITTED_POSTITS' => 'Status Ihrer verschickten Postits',
 	'TXT_LOGIN_REQUIRED'    => 'Sie m&uuml;ssen angemeldet sein um den Status Ihrer Postits abfragen zu k&ouml;nnen.',
-	'TXT_UNREAD_POSTS'      => 'Nachfolgende Liste zeigt Ihre verschickten Postits an, die noch nicht von den Empf&auml;ngern gelesen wurden.',
+	'TXT_UNREAD_POSTS'      => 'Die nachfolgende Liste enth&auml;lt die von Ihnen verschickten Postits, welche noch nicht vom Empf&auml;nger als gelesen markiert wurden.',
 	'TXT_ALL_POSTS_READ'    => 'Keine ungelesenen Postits vorhanden.',
 	'TXT_RECIPIENT'         => 'Empf&auml;nger',
 	'TXT_USER'              => 'Benutzer',
@@ -46,17 +46,16 @@ $LANG['POSTITS'] = array(
 	'TXT_SUBMIT_POSTITS'    => 'Neue Postits versenden',
 	'TXT_MESSAGE'           => 'Nachricht',
 	'TXT_SUBMITTED_WHEN'    => 'Abgeschickt am',
-	'TXT_PLEASE_SELECT'     => 'Bitte ausw&auml;hlen ...',
-	'TXT_SUBMIT'            => 'Postits abschicken',
+	'TXT_SUBMIT'            => 'Postit abschicken',
 	
 	// status messages
 	'TXT_RECIPIENT_MISSING' => 'Es wurde kein g&uuml;ltiger Empf&auml;nger ausgew&auml;hlt.',
 	'TXT_MESSAGE_MISSING'   => 'Es wurde keine Nachricht eingegeben.',
 	'TXT_SEND_SUCCESS'      => 'Postits wurden erfolgreich verschickt.',
 	'TXT_SEND_FAILED'       => 'Postits konnten nicht verschickt werden.',
-	'TXT_USAGE'             => 'Zum Verschicken von Postits, den oder die Empf&auml;nger aus der Benutzer und/oder Gruppen Liste ausw&auml;hlen. Dann eine Kurznachricht (max. 150 Zeichen) in das Textfeld eintragen und den abschicken Button dr&uuml;cken.',
-	'TXT_ERROR'             => 'Konnte keine Datenbankverbindung herstellen.',
+	'TXT_SELECT_RECIPIENTS' => 'W&auml;hle den oder die gew&uuml;nschten Empf&auml;nger aus der Benutzer- bzw. Gruppenliste aus. Eine Mehrfachauswahl ist m&ouml;glich.',
+	'TXT_ENTER_MESSAGE'     => 'Gebe die gew&uuml;nschte Kurznachricht (max. 150 Zeichen) in die Postits Form ein. Formatierungen und HTML Tags werden entfernt. Zum Versenden den Button "Postit abschicken" am unteren Rand anklicken.',
 	
-	// date format
-	'DATE_FORMAT'           => 'm/d/y G:i'
+	// German date format
+	'DATE_FORMAT'           => 'd.m.Y H:m'
 );

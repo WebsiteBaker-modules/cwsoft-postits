@@ -1,30 +1,29 @@
 /*
  * Page module: PostIts
  *
- * This module allows you to send virtual post its to other users.
- * Requires some modification in the index.php file of the template and frontend login enabled.
+ * This module allows you to send virtual PostIts (sticky notes) to other users.
+ * Requires some modification in the index.php file of the template.
  *
  * This file contains the Postits CSS definitions for frontend and backend.
  * 
  * LICENSE: GNU General Public License 3.0
  * 
- * @platform    CMS Websitebaker 2.8.x
+ * @platform    CMS WebsiteBaker 2.8.x
  * @package     postits
  * @author      cwsoft (http://cwsoft.de)
- * @version     1.0.0
+ * @version     1.2.0
  * @copyright   cwsoft
- * @license     http://www.gnu.org/licenses/gpl.html
+ * @license     http://www.gnu.org/licenses/gpl-3.0.html
 */
 
 /**
- * CSS definitions for the PostIts notes
+ * CSS for the PostIts notes
  */
 div.postits {
 	position: absolute;
 	top: 10px;
 	left: 100px;
-	font-family: Verdana,Helvetica, Arial, sans-serif;
-	font-size: small;
+	font: 115%/120% Calibri, Helvetica, Arial, sans-serif;
 	z-index: 999;
 	margin: 0px;
 	padding: 0px;
@@ -86,23 +85,117 @@ div.postits p.gif {
 
 div.postits p.sendby {
 	margin: 0.3em 0 0 0;
-	font-size: 70%;
+	font-size: 80%;
 	color: #555;
 	font-style: italic;
 }
 
 /**
- * CSS definitions used on the postits page (frontend)
+ * CSS for the unread table
  */
-th.postits {
-	background-color: #FFDD2F;
-	border-bottom: 1px solid #000;
-	font-weight: bold;
+#mod_postits  table {
+	margin-top: 0.5em;
+	width: auto;
+	border-collapse: collapse;
 }
 
-table.postits thead, table.postits thead tr:hover { background-color: #DFE1E5;}
-table.postits td { font-size: 95%; color:#666; line-height: 0.4em;}
-table.postits tr.odd { background-color: #F7F7F7; }
-table.postits tr:hover { background-color: #FFFFE0}
+#mod_postits th {
+	padding: 0 0.5em;
+	text-align: left;
+	color: #333;
+}
 
-.hide { display: none; }
+#mod_postits thead tr th {
+	border: 1px solid #aaa;
+	background: #bfbf30;
+}
+
+#mod_postits td {
+	border: 1px solid #aaa;
+	padding: 0 0.5em;
+}
+
+#mod_postits td:first-child {
+	width: 12em;
+}
+
+#mod_postits tr:nth-child(even) {
+	background: #f2f2e6;
+}
+
+/**
+ * CSS for the unread table
+ */
+#mod_postits form {
+	margin-top: 0.5em;
+	border: 0;
+}
+
+#mod_postits fieldset {
+	margin: 3em 0 2em 0;
+	background: #f2f2e6;
+	padding: 0.5em; 
+	border: 1px solid #fff; 
+	border-color: #fff #aaa #aaa #fff; 
+	width: 90%;
+	color: #333; 
+	font: 125%/120% Calibri, Arial, Helvetica, sans-serif; 
+}	
+
+#mod_postits legend {
+	height: 1.2em;
+	width: 10em;
+	padding: 0.1em; 
+	margin: -1.5em 0 0 -0.5em; 
+	border: 1px solid #fff; 
+	border-color: #e5e5c3 #505014 #505014 #e5e5c3;
+	background: #bfbf30; 
+	color: #333; 
+	text-align: center;
+	font-weight: bold; 
+}	
+	
+#mod_postits label {
+	font-weight: bold;
+	display: block;
+	margin-top: 0.5em;
+}
+
+#mod_postits select {
+	width: 16em;
+}
+
+#mod_postits textarea {
+	width: 130px;
+	height: 105px;
+	background: url(../images/postit_back.gif) no-repeat;
+	border: 0;
+	font: 75%/100% Calibri, Arial, Helvetica, sans-serif; 
+	padding: 35px 0 0 10px;
+	overflow: hidden;
+}
+
+#mod_postits button {
+	display: block;
+	margin-top: 1em;
+	width: auto;
+	padding: 0em 0.5em 0em 2.0em;
+	height: 2em;
+	font-weight: bold;
+	color: #333;
+	background: #bfbf30 url(../images/send_icon.gif) no-repeat 0.5em 50%;
+	border: 1px solid #fff; 
+	border-color: #e5e5c3 #505014 #505014 #e5e5c3;
+	cursor: pointer;
+}
+
+#mod_postits .select {
+	float: left;
+	margin-left: 1em;
+}
+
+#mod_postits .message {
+	clear: both;
+	margin-left: 1em;
+	margin-top: 1em;
+}

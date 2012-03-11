@@ -83,15 +83,12 @@ if (! isset($_SESSION['USER_ID'])) {
 		$tpl->set_var('TXT_ALL_POSTS_READ', '');
 
 		// display all unviewed messages sent by the user
-		$count = 0;
 		while($row = $results->fetchRow()) {
 			$tpl->set_var(array(
-				'CLASS_ODD'			=> ($count % 2 != 0) ? 'class="odd"' : '',
 				'POSTED_WHEN'		=> date($LANG['POSTITS']['DATE_FORMAT'], $row['posted_when']),
 				'RECIPIENT_NAME'	=> $row['recipient_name'],
 				'MESSAGE'			=> substr($row['message'], 0, 40) . (strlen($row['message']) > 39 ? ' ...' : '')
 			));
-			$count++;
 		
 			// add unread postits in append mode
 			$tpl->parse('unread_postits_list_block_handle', 'unread_postits_list_block', true);

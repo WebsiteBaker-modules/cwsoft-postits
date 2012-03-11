@@ -54,9 +54,9 @@ $LANG['POSTITS'] = array(
 	'TXT_MESSAGE_MISSING'   => 'No message specified.',
 	'TXT_SEND_SUCCESS'      => 'Postits successfully submitted.',
 	'TXT_SEND_FAILED'       => 'Unable to submit your Postits.',
-	'TXT_USAGE'             => 'To send new Postits, select the recipients from the users and/or groups list. Then type a short message (max. 150 chars.) into the text field and press the submit button.',
-	'TXT_ERROR'             => 'Error while accessing database.',
+	'TXT_SELECT_RECIPIENTS' => 'Select the recipients you want to send a sticky note from the users and/or groups list below. Multiselection of users/groups is supported.',
+	'TXT_ENTER_MESSAGE'     => 'Enter your short message (max. 150 characters) into the sticky note form below. HTML tags and formats will be removed. To send the Postit, press the "Submit Postits" button at the bottom.',
 	
-	// date format
+	// English date format
 	'DATE_FORMAT'           => 'm/d/y G:i'
 );
