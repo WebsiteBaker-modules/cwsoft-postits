@@ -1,8 +1,8 @@
 /*
  * Page module: Postits
  *
- * This module allows you to send virtual post its to other users.
- * Requires some modification in the index.php file of the template and frontend login enabled.
+ * This module allows you to send virtual PostIts (sticky notes) to other users.
+ * Requires some modification in the index.php file of the template.
  *
  * This file includes the Javascript code of the Postits module
  * 
@@ -13,7 +13,7 @@
  * @author      cwsoft (http://cwsoft.de)
  * @version     1.2.0
  * @copyright   cwsoft
- * @license     http://www.gnu.org/licenses/gpl.html
+ * @license     http://www.gnu.org/licenses/gpl-3.0.html
 */
 
 // Postits - global settings

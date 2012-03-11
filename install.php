@@ -2,23 +2,25 @@
 /*
  * Page module: PostIts
  *
- * This module allows you to send virtual post its to other users.
- * Requires some modification in the index.php file of the template and frontend login enabled.
+ * This module allows you to send virtual PostIts (sticky notes) to other users.
+ * Requires some modification in the index.php file of the template.
  *
  * This file creates the module settings table when the module is installed.
  * 
  * LICENSE: GNU General Public License 3.0
  * 
- * @platform    CMS Websitebaker 2.8.x
+ * @platform    CMS WebsiteBaker 2.8.x
  * @package     postits
  * @author      cwsoft (http://cwsoft.de)
- * @version     1.1.0
+ * @version     1.2.0
  * @copyright   cwsoft
- * @license     http://www.gnu.org/licenses/gpl.html
+ * @license     http://www.gnu.org/licenses/gpl-3.0.html
 */
 
 // prevent this file from being accessed directly
-if(defined('WB_PATH') == false) { exit("Cannot access this file directly"); }
+if (defined('WB_PATH') == false) {
+	exit("Cannot access this file directly");
+}
 
 // drop existing postit table
 $table = TABLE_PREFIX . 'mod_postits';
@@ -36,4 +38,5 @@ $sql = "CREATE TABLE `$table` (
   `viewed` INT(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 )";
+
 $database->query($sql);

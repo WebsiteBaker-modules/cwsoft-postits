@@ -2,30 +2,37 @@
 /*
  * Page module: PostIts
  *
- * This module allows you to send virtual post its to other users.
- * Requires some modification in the index.php file of the template and frontend login enabled.
+ * This module allows you to send virtual PostIts (sticky notes) to other users.
+ * Requires some modification in the index.php file of the template.
  *
- * This file contains the code to initialize the Postits routines.
+ * This file checks the installation requirements during installation
  * 
  * LICENSE: GNU General Public License 3.0
  * 
- * @platform    CMS Websitebaker 2.8.x
+ * @platform    CMS WebsiteBaker 2.8.x
  * @package     postits
  * @author      cwsoft (http://cwsoft.de)
- * @version     1.1.0
+ * @version     1.2.0
  * @copyright   cwsoft
- * @license     http://www.gnu.org/licenses/gpl.html
+ * @license     http://www.gnu.org/licenses/gpl-3.0.html
 */
 
 // prevent this file from being accessed directly
-if(defined('WB_PATH') == false) { exit("Cannot access this file directly"); }
+if (defined('WB_PATH') == false) {
+	exit("Cannot access this file directly");
+}
 
-$PRECHECK = array();
-
-/*
- * Specify required Website Baker version
+/**
+ * Check if minimum requirements for this module are fullfilled
+ * Only excecuted from WebsiteBaker 2.8 onwards
  */
-$PRECHECK['WB_VERSION'] = array('VERSION' => '2.8', 'OPERATOR' => '>=');
+$PRECHECK = array( 
+	// requires WebsiteBaker 2.8.x (from 2.8.2 onwards)
+	'WB_VERSION' => array('VERSION' => '2.8.2', 'OPERATOR' => '>='), 
+
+	// make sure PHP version is 5.2.2 or higher
+	'PHP_VERSION' => array('VERSION' => '5.2.2', 'OPERATOR' => '>=')
+);
 
 /*
  * Check if the jQuery folder exists in /include

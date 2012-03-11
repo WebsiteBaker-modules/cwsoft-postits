@@ -24,7 +24,7 @@ if (defined('WB_PATH') == false) {
 }
 
 // English module description
-$module_description = 'Module to send short messages (Postits) to other users or groups. For details visit <a href="https://github.com/cwsoft/wb-anynews#readme" target="_blank">GitHub</a>.';
+$module_description = 'Module to send short messages (Postits) to other users or groups. For details visit <a href="https://github.com/cwsoft/wb-postits#readme" target="_blank">GitHub</a>.';
 
 // initialize global $LANG variable as array if needed
 if (! isset($LANG) || (isset($LANG) && ! is_array($LANG))) {
