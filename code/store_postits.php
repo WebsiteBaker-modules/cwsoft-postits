@@ -17,29 +17,35 @@
  * @license     http://www.gnu.org/licenses/gpl-3.0.html
 */
 
-// check if page_id was submitted
-if (!(isset($_POST['page_id']) && is_numeric($_POST['page_id']))) die(header('Location: ../../index.php'));
-
 // include config.php file and admin class
 require_once('../../../config.php');
-
-// make sanity check of referer URL
-$referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 
-	(isset($HTTP_SERVER_VARS['HTTP_REFERER']) ? $HTTP_SERVER_VARS['HTTP_REFERER'] : '');
-
-// if referer is set check it
-if ($referer != '' && (!(strpos($referer, WB_URL) !== false || strpos($referer, WB_URL) !== false))) 
-	die(header('Location: ../../../index.php'));
+require_once('../../../framework/class.admin.php');
 
 // check if user has permissions to access the Postits module
-require_once('../../../framework/class.admin.php');
 $admin = new admin('Modules', 'module_view', false, false);
 if (!($admin->is_authenticated() && $admin->get_permission('postits', 'module'))) 
-	die(header('Location: ../../../index.php'));
+	exit("Sorry, you are have no permissions to access the Postits module");
 
-// create admin object with backend header and define back url for error messages
+// check if page_id was submitted
+if (!(isset($_POST['page_id']) && is_numeric($_POST['page_id']))) 
+	exit("Sorry, you are have no permissions to access the Postits module");
+
+// create admin object with backend header
 $admin = new admin('Pages', 'pages_modify', true, false);
-$url_back = ADMIN_URL . '/pages/modify.php?page_id=' . (int) $_POST['page_id'];
+
+// work out redirect URL depending if Postit was send from frontend or backend
+if (isset($_POST['frontend'])) {
+	// fetch page url segment for given PAGE_ID
+	$sql  = 'SELECT `link` FROM `' . TABLE_PREFIX . 'pages` WHERE `page_id` = ' . (int) $_POST['page_id'];
+	$link = $database->get_one($sql);
+	$link = ($link) ? $link : 'index';
+	
+	// build back link to calling page 
+	$url_back = WB_URL . PAGES_DIRECTORY . $link . PAGE_EXTENSION;
+
+} else {
+	$url_back = ADMIN_URL . '/pages/modify.php?page_id=' . (int) $_POST['page_id'];
+}
 
 // load module language file
 $lang = (dirname(__FILE__)) . '/../languages/' . LANGUAGE . '.php';
@@ -100,6 +106,7 @@ $recipients = array_unique($recipients);
 $sender_id = $admin->add_slashes((int) $admin->get_session('USER_ID'));
 $sender_name = $admin->add_slashes($admin->get_session('DISPLAY_NAME'));
 $posted_when = addslashes(time());
+
 // replace line breaks with <br /> tag
 $message = str_replace(array("\r\n", "\n", "\r"), array('<br />', '<br />', '<br />'), $admin->add_slashes($_POST['message']));
 $table = TABLE_PREFIX . 'mod_postits';
