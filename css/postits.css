@@ -167,7 +167,7 @@ div.postits p.sendby {
 
 #mod_postits textarea {
 	width: 130px;
-	height: 105px;
+	height: 125px;
 	background: url(../images/postit_back.gif) no-repeat;
 	border: 0;
 	font: 75%/100% Calibri, Arial, Helvetica, sans-serif; 

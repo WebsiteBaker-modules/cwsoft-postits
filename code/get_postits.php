@@ -17,29 +17,24 @@
  * @license     http://www.gnu.org/licenses/gpl-3.0.html
 */
 
+// include config.php file and admin class
+require_once('../../../config.php');
+require_once('../../../framework/class.admin.php');
+
+// check if user is logged in
+$admin = new admin('Pages', 'start', false, false);
+if (!$admin->is_authenticated()) return false;
+
 // check if action is defined
 if (!(isset($_POST['action']) && ($_POST['action'] == 'check_postits') && isset($_POST['show']) && is_numeric($_POST['show'])))
 	return false;
-
-// make sanity check of referer URL
-require_once('../../../config.php');
-$referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 
-	(isset($HTTP_SERVER_VARS['HTTP_REFERER']) ? $HTTP_SERVER_VARS['HTTP_REFERER'] : '');
-
-// if referer is set check it
-if ($referer != '' && (!(strpos($referer, WB_URL) !== false || strpos($referer, WB_URL) !== false))) return false;
-
-// check if user has loged in
-require_once('../../../framework/class.admin.php');
-$admin = new admin('Pages', 'start', false, false);
-if (!$admin->is_authenticated()) return false;
 
 // load module language file
 $lang = (dirname(__FILE__)) . '/../languages/' . LANGUAGE . '.php';
 require_once(!file_exists($lang) ? (dirname(__FILE__)) . '/../languages/EN.php' : $lang );
 
 /**
- * Check if Postits exists for the current user
+ * Check if a Postits exists for the current user
  */
 $table = TABLE_PREFIX . 'mod_postits';
 $max_posts = ($_POST['show'] > 0) ? (int) $_POST['show'] : '5';

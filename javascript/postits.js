@@ -19,10 +19,10 @@
 // Postits - global settings
 var Postits = { 
 	'Timer': '',         // internal Postits timer variable
-	'Interval': 60000,   // check every xx milliseconds for new Postits (5000 ms := 5 sec)
+	'Interval': 30000,   // check every xx milliseconds for new Postits (5000 ms := 5 sec, default: 30s)
 	'ActivateTimer': 1,  // 1.. activate timer (set to other value for debugging)
 	'ShowMax': 99,       // maximum number of Postits shown at once
-	'ShowGif': 1         // 1.. show PostIt GIF as background, 0.. display a "window style" div 
+	'ShowGif': 1         // 1.. show Postit GIF as background, 0.. display a "window style" div 
 };
 
 // function is executed if DOM is ready
@@ -30,7 +30,7 @@ jQuery(document).ready(function()
 {
 	// include Postits CSS file
 	jQuery.include([
-		WB_URL + '/modules/postits/frontend.css'
+		WB_URL + '/modules/postits/css/postits.css'
 	]); 
 	
 	// if DOM is ready, check for new Postits
@@ -89,7 +89,7 @@ function addPostits(result)
 		}
 		else {
 			jQuery('<div id="postit_' + result.Data[i].id + '" class="postits txt" style="left: ' + x + 'px; top: ' + y + 'px"></div>')
-			.append('<div class="header">Post It #' + i + '<a href="#"></a></div>')
+			.append('<div class="header">Postit #' + i + '<a href="#"></a></div>')
 			.append('<p>' + result.Data[i].message + '</p>')
 			.append('<p class="sendby">' + result.Data[i].sender + '</p>')
 			.appendTo('body')

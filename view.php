@@ -87,7 +87,7 @@ if (! isset($_SESSION['USER_ID'])) {
 			$tpl->set_var(array(
 				'POSTED_WHEN'		=> date($LANG['POSTITS']['DATE_FORMAT'], $row['posted_when']),
 				'RECIPIENT_NAME'	=> $row['recipient_name'],
-				'MESSAGE'			=> substr($row['message'], 0, 40) . (strlen($row['message']) > 39 ? ' ...' : '')
+				'MESSAGE'			=> substr(strip_tags($row['message']), 0, 40) . (strlen(strip_tags($row['message'])) > 39 ? ' ...' : '')
 			));
 		
 			// add unread postits in append mode

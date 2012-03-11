@@ -17,26 +17,21 @@
  * @license     http://www.gnu.org/licenses/gpl-3.0.html
 */
 
-// check if action is defined
+// include config.php file and admin class
+require_once('../../../config.php');
+require_once('../../../framework/class.admin.php');
+
+// check if user has logged in
+$admin = new admin('Pages', 'start', false, false);
+if (!$admin->is_authenticated()) return false;
+
+// check if a valid action is defined
 if (!(isset($_POST['action']) && $_POST['action'] == 'delete' && 
 	isset($_POST['postit_id']) && is_numeric($_POST['postit_id']) && isset($_POST['show']) && is_numeric($_POST['show']))) 
 	return false;
 
-// make sanity check of referer URL
-require_once('../../../config.php');
-$referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 
-	(isset($HTTP_SERVER_VARS['HTTP_REFERER']) ? $HTTP_SERVER_VARS['HTTP_REFERER'] : '');
-
-// if referer is set check it
-if ($referer != '' && (!(strpos($referer, WB_URL) !== false || strpos($referer, WB_URL) !== false))) return false;
-
-// check if user has loged in
-require_once('../../../framework/class.admin.php');
-$admin = new admin('Pages', 'start', false, false);
-if (!$admin->is_authenticated()) return false;
-
 /*
- * Delete PostIt specified by $_POST['postit_id']
+ * Delete Postit specified by $_POST['postit_id']
  */
 $table = TABLE_PREFIX . 'mod_postits';
 $max_posts = ($_POST['show'] > 0) ? (int) $_POST['show'] : '5';

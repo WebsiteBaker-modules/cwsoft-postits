@@ -1,6 +1,6 @@
 # Postits module for CMS WebsiteBaker (2.8.x)
 
-The Postits module allows logged in users to send short text messages (150 characters) to other users or groups via the [WebsiteBaker CMS](http://www.websitebaker2.org) frontend or backend. The Postits (sticky notes) are automatically displayed at the frontend and/or backend, once the recipient has logged into WebsiteBaker. The sender can check whether his note was already read by the recipient.
+The Postits module allows logged in users to send short text messages (150 characters) to other users or groups via the [WebsiteBaker CMS](http://www.websitebaker2.org) frontend or backend. The Postits (sticky notes) are automatically faded into the frontend and/or backend view, once the recipient has logged into WebsiteBaker, no matter which page is displayed in the browser. The sender can check whether his note was already read by the recipient.
 
 ## Download
 The released stable `Postits` installation packages for the WebsiteBaker CMS can be found in the [GitHub download area](https://github.com/cwsoft/wb-postits/downloads). It is recommended to install/update to the latest available version listed. Older versions are provided for compatibility reasons with older WebsiteBaker versions and may contain bugs or security issues. The development history of the Postits module can be tracked via [GitHub](https://github.com/cwsoft/wb-postits).
@@ -45,7 +45,7 @@ Change the lines above as follows:
 		register_frontend_modfiles('js');
 	}
 
-Postits will now automatically appear in your frontend, once the recipient is logged in. Reload the frontend view in your browser (F5) to see if it works. 
+Postits now automatically appear in your frontend, once the recipient is logged in. Reload the frontend view in your browser (F5) to see if it works. Per default, the Postits module checks every 30 seconds for new Postits. You can modify this value in the ***/javascript/postits.js*** file.
 
 If it doesn't work, check if JavaScript is enabled in your browser. Ensure you added the code above in the given order to your default frontend template. The code must be placed within the `<head></head>` section.
 
