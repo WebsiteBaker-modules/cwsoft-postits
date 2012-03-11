@@ -2,23 +2,25 @@
 /*
  * Page module: PostIts
  *
- * This module allows you to send virtual post its to other users.
- * Requires some modification in the index.php file of the template and frontend login enabled.
+ * This module allows you to send virtual PostIts (sticky notes) to other users.
+ * Requires some modification in the index.php file of the template.
  *
- * This file provides an overview of Postits send but not yet read by the recipients.
+ * This file implements the frontend view of the Postits module.
  * 
  * LICENSE: GNU General Public License 3.0
  * 
- * @platform    CMS Websitebaker 2.8.x
+ * @platform    CMS WebsiteBaker 2.8.x
  * @package     postits
  * @author      cwsoft (http://cwsoft.de)
- * @version     1.1.0
+ * @version     1.2.0
  * @copyright   cwsoft
- * @license     http://www.gnu.org/licenses/gpl.html
+ * @license     http://www.gnu.org/licenses/gpl-3.0.html
 */
 
 // prevent this file from being accessed directly
-if(defined('WB_PATH') == false) { exit("Cannot access this file directly"); }
+if (defined('WB_PATH') == false) {
+	exit("Cannot access this file directly");
+}
 
 /**
  * Load module language file and set-up template
@@ -33,7 +35,7 @@ $tpl = new Template(dirname(__FILE__) . '/templates');
 $tpl->set_file('page', 'frontend.htt');
 
 // replace template placeholder with text from language file
-foreach($LANG[0] as $key => $value) {
+foreach($LANG['POSTITS'] as $key => $value) {
 	$tpl->set_var($key, $value);
 }
 
@@ -43,7 +45,8 @@ foreach($LANG[0] as $key => $value) {
 // check if user is logged in
 if (!isset($_SESSION['USER_ID'])) {
 	// remove/hide template elements not required
-	$tpl->unset_var(array('TXT_UNREAD_POSTS', 'TXT_POSTS_READ'));
+	$tpl->set_var('TXT_UNREAD_POSTS', '');
+	$tpl->set_var('TXT_ALL_POSTS_READ', '');
 	$tpl->set_var('CLASS_HIDE', 'hide');
 
 } else {
@@ -54,7 +57,8 @@ if (!isset($_SESSION['USER_ID'])) {
 
 	if ($results && $results->numRows() > 0) {
 		// remove/hide template elements not required and add new block
-		$tpl->unset_var(array('TXT_POSTS_READ', 'TXT_LOGIN_FIRST'));
+		$tpl->set_var('TXT_ALL_POSTS_READ', '');
+		$tpl->set_var('TXT_LOGIN_REQUIRED', '');
 		$tpl->set_var('CLASS_HIDE', '');
 		$tpl->set_block('page', 'postit_list', 'postit_replace');
 
@@ -63,7 +67,7 @@ if (!isset($_SESSION['USER_ID'])) {
 		while($row = $results->fetchRow()) {
 			$tpl->set_var(array(
 				'CLASS_ODD'			=> ($count % 2 != 0) ? 'class="odd"' : '',
-				'POSTED_WHEN'		=> date($LANG[0]['DATE_FORMAT'], $row['posted_when']),
+				'POSTED_WHEN'		=> date($LANG['POSTITS']['DATE_FORMAT'], $row['posted_when']),
 				'RECIPIENT_NAME'	=> $row['recipient_name'],
 				'MESSAGE'			=> substr($row['message'], 0, 40) . (strlen($row['message']) > 39 ? ' ...' : '')
 				)
@@ -74,7 +78,8 @@ if (!isset($_SESSION['USER_ID'])) {
 
 	} else {
 		// no unviewed posts available (remove hide elements not required)
-		$tpl->unset_var(array('TXT_UNREAD_POSTS', 'TXT_LOGIN_FIRST'));
+		$tpl->set_var('TXT_UNREAD_POSTS', '');
+		$tpl->set_var('TXT_LOGIN_REQUIRED', '');
 		$tpl->set_var('CLASS_HIDE', 'hide');
 	}
 }

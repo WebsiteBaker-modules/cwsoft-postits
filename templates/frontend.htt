@@ -1,15 +1,19 @@
 <div id="mod_postits">
 
-<h2>{HEADING_FRONTEND}</h2>
-<p>{TXT_LOGIN_FIRST} {TXT_UNREAD_POSTS} {TXT_POSTS_READ}</p>
+<h2>{TXT_SUBMITTED_POSTITS}</h2>
+<p>
+	{TXT_LOGIN_REQUIRED} 
+	{TXT_UNREAD_POSTS} 
+	{TXT_ALL_POSTS_READ}
+</p>
 
 <div class="{CLASS_HIDE}">
 <table class="postits" width="98%" border="0" cellspacing="0" cellpadding="5">
 <thead>
 	<tr>
-		<th width="25%">{TXT_TH_COL1}</th>
-		<th width="25%">{TXT_TH_COL2}</th>
-		<th width="58%">{TXT_TH_COL3}</th>
+		<th width="25%">{TXT_RECIPIENT}</th>
+		<th width="25%">{TXT_SUBMITTED_WHEN}</th>
+		<th width="58%">{TXT_MESSAGE}</th>
 	</tr>
 </thead>
 

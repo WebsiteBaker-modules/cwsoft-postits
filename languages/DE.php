@@ -2,61 +2,61 @@
 /*
  * Page module: PostIts
  *
- * This module allows you to send virtual post its to other users.
- * Requires some modification in the index.php file of the template and frontend login enabled.
+ * This module allows you to send virtual PostIts (sticky notes) to other users.
+ * Requires some modification in the index.php file of the template.
  *
- * This file contains the German text outputs for the Postit module.
+ * This file contains the German text outputs for the Postits module.
  * 
  * LICENSE: GNU General Public License 3.0
  * 
- * @platform    CMS Websitebaker 2.8.x
+ * @platform    CMS WebsiteBaker 2.8.x
  * @package     postits
  * @author      cwsoft (http://cwsoft.de)
- * @version     1.0.0
+ * @translation cwsoft
+ * @version     1.2.0
  * @copyright   cwsoft
- * @license     http://www.gnu.org/licenses/gpl.html
+ * @license     http://www.gnu.org/licenses/gpl-3.0.html
 */
 
 // prevent this file from being accessed directly
-if (!defined('WB_PATH')) die(header('Location: ../../index.php'));
+if (defined('WB_PATH') == false) {
+	exit("Cannot access this file directly");
+}
 
 // German module description
-$module_description = 'Dieses Module erm&ouml;glicht das Verschicken von Kurznachrichten (PostIts) an andere Benutzer oder Gruppen. Weitere Details finden Sie <a href="{WB_URL}/modules/postits/help/help_DE.html" target="_blank">hier</a>.';
+$module_description = 'Modul zum Verschicken von Kurznachrichten (Postits) an andere Benutzer oder Gruppen. Weitere Infos auf <a href="https://github.com/cwsoft/wb-anynews#readme" target="_blank">GitHub</a>.';
 
-// declare module language array
-$LANG = array();
+// initialize global $LANG variable as array if needed
+if (! isset($LANG) || (isset($LANG) && ! is_array($LANG))) {
+	$LANG = array();
+}
 
-// Text outputs frontend view (htt/frontend.htt)
-$LANG[0] = array(
-	'HEADING_FRONTEND'		=> 'Status Ihrer gesendeten Postits',
-	'TXT_LOGIN_FIRST'		=> 'Sie m&uuml;ssen sich erst anmelden, um den Status Ihrer Postits abfragen zu k&ouml;nnen.',
-	'TXT_UNREAD_POSTS'		=> 'Nachfolgend sind die von Ihnen verschickten Postits aufgelistet, welche noch nicht gelesen wurden.',
-	'TXT_POSTS_READ'		=> 'Die von Ihnen verschickten Postits wurden bereits gelesen.',
-	'TXT_TH_COL1'			=> 'Empf&auml;nger',
-	'TXT_TH_COL2'			=> 'Abgeschickt',
-	'TXT_TH_COL3'			=> 'Nachricht',
-	'DATE_FORMAT'			=> 'd.m.y H:i'
+// Postits text outputs
+$LANG['POSTITS'] = array(
+	// unread Postits
+	'TXT_SUBMITTED_POSTITS' => 'Status Ihrer verschickten Postits',
+	'TXT_LOGIN_REQUIRED'    => 'Sie m&uuml;ssen angemeldet sein um den Status Ihrer Postits abfragen zu k&ouml;nnen.',
+	'TXT_UNREAD_POSTS'      => 'Nachfolgende Liste zeigt Ihre verschickten Postits an, die noch nicht von den Empf&auml;ngern gelesen wurden.',
+	'TXT_ALL_POSTS_READ'    => 'Keine ungelesenen Postits vorhanden.',
+	'TXT_RECIPIENT'         => 'Empf&auml;nger',
+	'TXT_USER'              => 'Benutzer',
+	'TXT_GROUP'             => 'Gruppe',
+	
+	// submit PostIts 
+	'TXT_SUBMIT_POSTITS'    => 'Neue Postits versenden',
+	'TXT_MESSAGE'           => 'Nachricht',
+	'TXT_SUBMITTED_WHEN'    => 'Abgeschickt am',
+	'TXT_PLEASE_SELECT'     => 'Bitte ausw&auml;hlen ...',
+	'TXT_SUBMIT'            => 'Postits abschicken',
+	
+	// status messages
+	'TXT_RECIPIENT_MISSING' => 'Es wurde kein g&uuml;ltiger Empf&auml;nger ausgew&auml;hlt.',
+	'TXT_MESSAGE_MISSING'   => 'Es wurde keine Nachricht eingegeben.',
+	'TXT_SEND_SUCCESS'      => 'Postits wurden erfolgreich verschickt.',
+	'TXT_SEND_FAILED'       => 'Postits konnten nicht verschickt werden.',
+	'TXT_USAGE'             => 'Zum Verschicken von Postits, den oder die Empf&auml;nger aus der Benutzer und/oder Gruppen Liste ausw&auml;hlen. Dann eine Kurznachricht (max. 150 Zeichen) in das Textfeld eintragen und den abschicken Button dr&uuml;cken.',
+	'TXT_ERROR'             => 'Konnte keine Datenbankverbindung herstellen.',
+	
+	// date format
+	'DATE_FORMAT'           => 'm/d/y G:i'
 );
-
-// Text outputs backend view (htt/backend.htt)
-$LANG[1] = array(
-	'HEADING_BACKEND'		=> 'Postit verschicken',
-	'TXT_SEND_POSTIT'		=> 'Postits k&ouml;nnen an einzelne Benutzer und/oder einzelne Gruppen verschickt werden. ' .
-							   'Die Mehrfachauswahl von Benutzern und/oder Gruppen ist m&ouml;glich. Der Nachrichtentext ' .
-							   'kann maximal 150 Zeichen betragen.',
-	'TXT_HELP'				=> 'Hilfe',
-	'TXT_STATUS'			=> 'Postit Status',
-	'TXT_ERROR_MESSAGE'		=> 'Uups, Fehler beim Zugriff auf die Datenbank.',
-	'TXT_RECIPIENT'			=> 'Empf&auml;nger',
-	'TXT_USER'				=> 'Benutzer',
-	'TXT_GROUP'				=> 'Gruppen',
-	'TXT_MESSAGE'			=> 'Nachricht',
-	'TXT_PLEASE_SELECT'		=> 'Bitte w&auml;hlen ...',
-	'TXT_SUBMIT'			=> 'Postit senden',
-	'TXT_RECIPIENT_MISSING'	=> 'Es wurde kein g&uuml;ltiger Empf&auml;nger ausgew&auml;hlt.',
-	'TXT_MESSAGE_MISSING'	=> 'Es wurde keine Nachricht eingegeben.',
-	'TXT_SEND_OK'			=> 'Die Postits wurden erfolgreich verschickt.',
-	'TXT_SEND_FAILED'		=> 'Postits konnten nicht verschickt werden.'
-);
-
-?>

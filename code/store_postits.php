@@ -2,19 +2,19 @@
 /*
  * Page module: PostIts
  *
- * This module allows you to send virtual post its to other users.
- * Requires some modification in the index.php file of the template and frontend login enabled.
+ * This module allows you to send virtual PostIts (sticky notes) to other users.
+ * Requires some modification in the index.php file of the template.
  *
- * This file contains the code to store the Postit in the database.
+ * This file stores new Postits in the database.
  * 
  * LICENSE: GNU General Public License 3.0
  * 
- * @platform    CMS Websitebaker 2.8.x
+ * @platform    CMS WebsiteBaker 2.8.x
  * @package     postits
  * @author      cwsoft (http://cwsoft.de)
- * @version     1.1.0
+ * @version     1.2.0
  * @copyright   cwsoft
- * @license     http://www.gnu.org/licenses/gpl.html
+ * @license     http://www.gnu.org/licenses/gpl-3.0.html
 */
 
 // check if page_id was submitted
@@ -47,11 +47,11 @@ require_once(!file_exists($lang) ? (dirname(__FILE__)) . '/../languages/EN.php' 
 
 // check if recipients were submitted
 if (!((isset($_POST['users']) && count($_POST['users']) > 0) || (isset($_POST['groups']) && count($_POST['groups']) >0)))
-	$admin->print_error($LANG[1]['TXT_RECIPIENT_MISSING'], $url_back);
+	$admin->print_error($LANG['POSTITS']['TXT_RECIPIENT_MISSING'], $url_back);
 
 // check if a message was specified
 if (!(isset($_POST['message']) && strip_tags(trim($_POST['message'])) != ''))
-	$admin->print_error($LANG[1]['TXT_MESSAGE_MISSING'], $url_back);
+	$admin->print_error($LANG['POSTITS']['TXT_MESSAGE_MISSING'], $url_back);
 
 /**
  * Create array with all user_ids and usernames
@@ -114,7 +114,7 @@ foreach ($recipients as $recipient => $user_id) {
 
 // output status message
 if ($database->is_error()) {
-	$admin->print_error($LANG[1]['TXT_SEND_FAILED'] . '<br />' . $database->get_error(), $url_back);
+	$admin->print_error($LANG['POSTITS']['TXT_SEND_FAILED'] . '<br />' . $database->get_error(), $url_back);
 } else {
-	$admin->print_success($LANG[1]['TXT_SEND_OK'], $url_back);
+	$admin->print_success($LANG['POSTITS']['TXT_SEND_SUCCESS'], $url_back);
 }

@@ -1,7 +1,7 @@
 <div id="mod_postits">
 
-<h2>{HEADING_BACKEND}</h2>
-<p>{TXT_SEND_POSTIT}</p>
+<h2>{TXT_SUBMIT_POSTITS}</h2>
+<p>{TXT_USAGE}</p>
 
 <form name="submit_postit" method="post" action="{URL_SUBMIT}">
 	<input type="hidden" name="page_id" value="{PAGE_ID}" />

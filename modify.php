@@ -2,23 +2,25 @@
 /*
  * Page module: PostIts
  *
- * This module allows you to send virtual post its to other users.
- * Requires some modification in the index.php file of the template and frontend login enabled.
+ * This module allows you to send virtual PostIts (sticky notes) to other users.
+ * Requires some modification in the index.php file of the template.
  *
- * This file provides the module settings via the WB backend.
+ * This file implements the backend view of the Postits module.
  * 
  * LICENSE: GNU General Public License 3.0
  * 
- * @platform    CMS Websitebaker 2.8.x
+ * @platform    CMS WebsiteBaker 2.8.x
  * @package     postits
  * @author      cwsoft (http://cwsoft.de)
- * @version     1.1.0
+ * @version     1.2.0
  * @copyright   cwsoft
- * @license     http://www.gnu.org/licenses/gpl.html
+ * @license     http://www.gnu.org/licenses/gpl-3.0.html
 */
 
 // prevent this file from being accessed directly
-if(defined('WB_PATH') == false) { exit("Cannot access this file directly"); }
+if (defined('WB_PATH') == false) {
+	exit("Cannot access this file directly");
+}
 
 /**
  * Load module language file and set-up template
@@ -33,7 +35,7 @@ $tpl = new Template(dirname(__FILE__) . '/templates');
 $tpl->set_file('page', 'backend.htt');
 
 // replace template placeholder with text from language file
-foreach($LANG[1] as $key => $value) {
+foreach($LANG['POSTITS'] as $key => $value) {
 	$tpl->set_var($key, $value);
 }
 
