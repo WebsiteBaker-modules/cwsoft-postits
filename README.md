@@ -102,4 +102,4 @@ If you have questions or issues with the Postits module, please visit the [Engli
  - information about changes you made to WebsiteBaker (if any)
 
 ## Credits
-Credits goes to the WebsiteBaker forum user Marcus Jann ([Marcus70](http://www.websitebaker2.org/forum/index.php?action=profile;u=12071)), who maintained the Postits module between April and September 2009.
+Credits goes to the forum user [Marcus70](http://www.websitebaker2.org/forum/index.php?action=profile;u=12071) for maintaining Postits from April to September 2009 and to the user [marmot](http://www.websitebaker2.org/forum/index.php?action=profile;u=19102) for providing some compatibility fixes for newer jQuery versions.

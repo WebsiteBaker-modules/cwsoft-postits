@@ -2,7 +2,7 @@
 /*
  * Page module: PostIts
  *
- * This module allows you to send virtual PostIts (sticky notes) to other users.
+ * This module allows you to send virtual Postits (sticky notes) to other users.
  * Requires some modification in the index.php file of the template.
  *
  * This file stores new Postits in the database.
@@ -24,11 +24,11 @@ require_once('../../../framework/class.admin.php');
 // check if user has permissions to access the Postits module
 $admin = new admin('Modules', 'module_view', false, false);
 if (!($admin->is_authenticated() && $admin->get_permission('postits', 'module'))) 
-	exit("Sorry, you are have no permissions to access the Postits module");
+	exit("Sorry, you have no permissions to access the Postits module");
 
 // check if page_id was submitted
 if (!(isset($_POST['page_id']) && is_numeric($_POST['page_id']))) 
-	exit("Sorry, you are have no permissions to access the Postits module");
+	exit("Sorry, you have no permissions to access the Postits module");
 
 // create admin object with backend header
 $admin = new admin('Pages', 'pages_modify', true, false);
