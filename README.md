@@ -19,7 +19,7 @@ The minimum requirements to get Postits running are as follows:
 
 ## Installation
 
-1. download [Postits v1.2.0](https://github.com/downloads/cwsoft/wb-postits/cwsoft-wb-postits-v1.2.0.zip) WebsiteBaker installation package
+1. download [Postits v1.2.1](https://github.com/downloads/cwsoft/wb-postits/cwsoft-wb-postits-v1.2.1.zip) WebsiteBaker installation package
 2. log into your WebsiteBaker backend and go to the `Add-ons/Modules` section
 3. install the downloaded zip archive via the WebsiteBaker installer
 4. go to the pages section and create a new page of type `Postits`
