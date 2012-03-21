@@ -1,8 +1,8 @@
 <?php
 /*
- * Page module: PostIts
+ * Page module: Postits
  *
- * This module allows you to send virtual PostIts (sticky notes) to other users.
+ * This module allows you to send virtual Postits (sticky notes) to other users.
  * Requires some modification in the index.php file of the template.
  *
  * This file graps the unread Postits for the logged in user from the database.
@@ -12,7 +12,7 @@
  * @platform    CMS WebsiteBaker 2.8.x
  * @package     postits
  * @author      cwsoft (http://cwsoft.de)
- * @version     1.2.0
+ * @version     1.2.1
  * @copyright   cwsoft
  * @license     http://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -26,8 +26,16 @@ $admin = new admin('Pages', 'start', false, false);
 if (!$admin->is_authenticated()) return false;
 
 // check if action is defined
-if (!(isset($_POST['action']) && ($_POST['action'] == 'check_postits') && isset($_POST['show']) && is_numeric($_POST['show'])))
+if (!
+	(
+	isset($_POST['action']) 
+	&& $_POST['action'] == 'check_postits'
+	&& isset($_POST['show']) 
+	&& is_numeric($_POST['show'])
+	)
+) {
 	return false;
+}
 
 // load module language file
 $lang = (dirname(__FILE__)) . '/../languages/' . LANGUAGE . '.php';
@@ -38,7 +46,7 @@ require_once(!file_exists($lang) ? (dirname(__FILE__)) . '/../languages/EN.php' 
  */
 $table = TABLE_PREFIX . 'mod_postits';
 $max_posts = ($_POST['show'] > 0) ? (int) $_POST['show'] : '5';
-$user_id = $admin->add_slashes((int) $admin->get_session('USER_ID'));
+$user_id = (int) $admin->get_session('USER_ID');
 $sql = "SELECT * FROM `$table` WHERE `recipient_id` = '$user_id' ORDER BY id ASC LIMIT $max_posts";
 $results = $database->query($sql);
 if (!$results) return false;

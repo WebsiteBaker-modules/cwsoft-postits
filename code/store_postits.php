@@ -1,6 +1,6 @@
 <?php
 /*
- * Page module: PostIts
+ * Page module: Postits
  *
  * This module allows you to send virtual Postits (sticky notes) to other users.
  * Requires some modification in the index.php file of the template.
@@ -12,7 +12,7 @@
  * @platform    CMS WebsiteBaker 2.8.x
  * @package     postits
  * @author      cwsoft (http://cwsoft.de)
- * @version     1.2.0
+ * @version     1.2.1
  * @copyright   cwsoft
  * @license     http://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -52,12 +52,24 @@ $lang = (dirname(__FILE__)) . '/../languages/' . LANGUAGE . '.php';
 require_once(!file_exists($lang) ? (dirname(__FILE__)) . '/../languages/EN.php' : $lang );
 
 // check if recipients were submitted
-if (!((isset($_POST['users']) && count($_POST['users']) > 0) || (isset($_POST['groups']) && count($_POST['groups']) >0)))
+if (!
+	(
+	(isset($_POST['users']) && count($_POST['users']) > 0) 
+	|| (isset($_POST['groups']) && count($_POST['groups']) >0)
+	)
+) {
 	$admin->print_error($LANG['POSTITS']['TXT_RECIPIENT_MISSING'], $url_back);
+}
 
 // check if a message was specified
-if (!(isset($_POST['message']) && strip_tags(trim($_POST['message'])) != ''))
+if (!
+	(
+	isset($_POST['message']) 
+	&& strip_tags(trim($_POST['message'])) != ''
+	)
+) {
 	$admin->print_error($LANG['POSTITS']['TXT_MESSAGE_MISSING'], $url_back);
+}
 
 /**
  * Create array with all user_ids and usernames
@@ -103,7 +115,7 @@ $recipients = array_unique($recipients);
  * Create SQL query string (insert message per selected user)
  */
 // prepare data to write into database
-$sender_id = $admin->add_slashes((int) $admin->get_session('USER_ID'));
+$sender_id = (int) $admin->get_session('USER_ID');
 $sender_name = $admin->add_slashes($admin->get_session('DISPLAY_NAME'));
 $posted_when = addslashes(time());
 
