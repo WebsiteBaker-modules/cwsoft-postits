@@ -1,8 +1,8 @@
 <?php
 /*
- * Page module: PostIts
+ * Page module: Postits
  *
- * This module allows you to send virtual PostIts (sticky notes) to other users.
+ * This module allows you to send virtual Postits (sticky notes) to other users.
  * Requires some modification in the index.php file of the template.
  *
  * This file contains the German text outputs for the Postits module.
@@ -13,7 +13,7 @@
  * @package     postits
  * @author      cwsoft (http://cwsoft.de)
  * @translation cwsoft
- * @version     1.2.0
+ * @version     1.2.1
  * @copyright   cwsoft
  * @license     http://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -36,6 +36,7 @@ $LANG['POSTITS'] = array(
 	// unread Postits
 	'TXT_SUBMITTED_POSTITS' => 'Status Ihrer verschickten Postits',
 	'TXT_LOGIN_REQUIRED'    => 'Sie m&uuml;ssen angemeldet sein um den Status Ihrer Postits abfragen zu k&ouml;nnen.',
+	'TXT_NO_PERMISSIONS'    => 'Sie haben keine Berechtigung um Postits mit dem Postits Module zu verschicken.',
 	'TXT_UNREAD_POSTS'      => 'Die nachfolgende Liste enth&auml;lt die von Ihnen verschickten Postits, welche noch nicht vom Empf&auml;nger als gelesen markiert wurden.',
 	'TXT_ALL_POSTS_READ'    => 'Keine ungelesenen Postits vorhanden.',
 	'TXT_RECIPIENT'         => 'Empf&auml;nger',

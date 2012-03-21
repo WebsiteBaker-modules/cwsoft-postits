@@ -1,8 +1,8 @@
 <?php
 /*
- * Page module: PostIts
+ * Page module: Postits
  *
- * This module allows you to send virtual PostIts (sticky notes) to other users.
+ * This module allows you to send virtual Postits (sticky notes) to other users.
  * Requires some modification in the index.php file of the template.
  *
  * This file implements the frontend view of the Postits module.
@@ -12,7 +12,7 @@
  * @platform    CMS WebsiteBaker 2.8.x
  * @package     postits
  * @author      cwsoft (http://cwsoft.de)
- * @version     1.2.0
+ * @version     1.2.1
  * @copyright   cwsoft
  * @license     http://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -33,7 +33,7 @@ require_once(WB_PATH . '/include/phplib/template.inc');
 $tpl = new Template(dirname(__FILE__) . '/templates');
 
 // configure handling of unknown {variables} (remove:=default, keep, comment)
-$tpl->set_unknowns('keep');
+$tpl->set_unknowns('remove');
 
 // configure debug mode (0:= default, 1:=variable assignments, 2:=calls to get variable, 4:=show internals)
 $tpl->debug = 0;
@@ -51,14 +51,24 @@ foreach($LANG['POSTITS'] as $key => $value) {
 	$tpl->set_var($key, $value);
 }
 
+// load admin class and initiate object to check module permissions
+require_once(WB_PATH . '/framework/class.admin.php');
+$access = new admin('Modules', 'module_view', false, false);
+
 /**
  * Output template
  */
-// check if user is logged in
-if (! isset($_SESSION['USER_ID'])) {
+// check if user is logged in and has permissions for Postits module
+if (! ($access->is_authenticated() && $access->get_permission('postits', 'module'))) {
 	// remove template elements not required
 	$tpl->set_var('TXT_UNREAD_POSTS', '');
 	$tpl->set_var('TXT_ALL_POSTS_READ', '');
+
+	if ($access->is_authenticated()) {
+		$tpl->set_var('TXT_LOGIN_REQUIRED', '');
+	} else {
+		$tpl->set_var('TXT_NO_PERMISSIONS', '');
+	}
 	
 	$tpl->set_var('unread_postits_block_handle', '');
 	$tpl->set_var('submit_postits_block_handle', '');
@@ -66,6 +76,7 @@ if (! isset($_SESSION['USER_ID'])) {
 } else {
 	// remove template elements not required
 	$tpl->set_var('TXT_LOGIN_REQUIRED', '');
+	$tpl->set_var('TXT_NO_PERMISSIONS', '');
 
 	// add the submit postits block
 	$tpl->parse('submit_postits_block_handle', 'submit_postits_block', false);
@@ -85,9 +96,9 @@ if (! isset($_SESSION['USER_ID'])) {
 		// display all unviewed messages sent by the user
 		while($row = $results->fetchRow()) {
 			$tpl->set_var(array(
-				'POSTED_WHEN'		=> date($LANG['POSTITS']['DATE_FORMAT'], $row['posted_when']),
-				'RECIPIENT_NAME'	=> $row['recipient_name'],
-				'MESSAGE'			=> substr(strip_tags($row['message']), 0, 40) . (strlen(strip_tags($row['message'])) > 39 ? ' ...' : '')
+				'POSTED_WHEN'    => date($LANG['POSTITS']['DATE_FORMAT'], $row['posted_when']),
+				'RECIPIENT_NAME' => $row['recipient_name'],
+				'MESSAGE'        => substr(strip_tags($row['message']), 0, 40) . (strlen(strip_tags($row['message'])) > 39 ? ' ...' : '')
 			));
 		
 			// add unread postits in append mode
@@ -130,10 +141,10 @@ if (! isset($_SESSION['USER_ID'])) {
 
 	// update template variables
 	$tpl->set_var(array(
-		'URL_SUBMIT'			=> WB_URL . '/modules/postits/code/store_postits.php',
-		'PAGE_ID'				=> (int) $page_id,
-		'OPTION_USER_NAMES'		=> $user_options,
-		'OPTION_GROUP_NAMES'	=> $group_options
+		'URL_SUBMIT'         => WB_URL . '/modules/postits/code/store_postits.php',
+		'PAGE_ID'            => (int) $page_id,
+		'OPTION_USER_NAMES'  => $user_options,
+		'OPTION_GROUP_NAMES' => $group_options
 	));
 
 }
