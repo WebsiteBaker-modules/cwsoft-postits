@@ -1,8 +1,8 @@
 <?php
 /**
- * Page module: PostIts
+ * Page module: Postits
  *
- * This module allows you to send virtual PostIts (sticky notes) to other users.
+ * This module allows you to send virtual Postits (sticky notes) to other users.
  * Requires some modification in the index.php file of the template.
  *
  * This file prevents directory listing.
@@ -12,7 +12,7 @@
  * @platform    CMS WebsiteBaker 2.8.x
  * @package     postits
  * @author      cwsoft (http://cwsoft.de)
- * @version     1.2.0
+ * @version     1.2.1
  * @copyright   cwsoft
  * @license     http://www.gnu.org/licenses/gpl.html
 */
