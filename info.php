@@ -12,7 +12,7 @@
  * @platform    CMS WebsiteBaker 2.8.x
  * @package     postits
  * @author      cwsoft (http://cwsoft.de)
- * @version     1.2.1
+ * @version     1.3.0
  * @copyright   cwsoft
  * @license     http://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -21,7 +21,7 @@
 $module_directory      = 'postits';
 $module_name           = 'Postits';
 $module_function       = 'page';
-$module_version        = '1.2.1';
+$module_version        = '1.3.0';
 $module_status         = 'STABLE';
 $module_platform       = '2.8.x';
 $module_author         = 'cwsoft (http://cwsoft.de)';

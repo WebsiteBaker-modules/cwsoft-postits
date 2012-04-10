@@ -50,6 +50,7 @@ $LANG['POSTITS'] = array(
 	'TXT_SUBMITTED_WHEN'    => 'Submitted',
 	'TXT_PLEASE_SELECT'     => 'Please select ...',
 	'TXT_SUBMIT'            => 'Submit Postits',
+	'TXT_REMAINING_CHARS'   => 'Remaining characters',
 	
 	// status messages
 	'TXT_RECIPIENT_MISSING' => 'No valid recipient selected.',

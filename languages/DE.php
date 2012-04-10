@@ -49,6 +49,7 @@ $LANG['POSTITS'] = array(
 	'TXT_MESSAGE'           => 'Nachricht',
 	'TXT_SUBMITTED_WHEN'    => 'Abgeschickt am',
 	'TXT_SUBMIT'            => 'Postit abschicken',
+	'TXT_REMAINING_CHARS'   => 'Noch verf&uuml;gbare Zeichen',
 	
 	// status messages
 	'TXT_RECIPIENT_MISSING' => 'Es wurde kein g&uuml;ltiger Empf&auml;nger ausgew&auml;hlt.',

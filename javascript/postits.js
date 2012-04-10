@@ -1,7 +1,7 @@
 /*
  * Page module: Postits
  *
- * This module allows you to send virtual PostIts (sticky notes) to other users.
+ * This module allows you to send virtual Postits (sticky notes) to other users.
  * Requires some modification in the index.php file of the template.
  *
  * This file includes the Javascript code of the Postits module
@@ -11,13 +11,13 @@
  * @platform    CMS WebsiteBaker 2.8.x
  * @package     postits
  * @author      cwsoft (http://cwsoft.de)
- * @version     1.2.0
+ * @version     1.3.0
  * @copyright   cwsoft
  * @license     http://www.gnu.org/licenses/gpl-3.0.html
 */
 
 // Postits - global settings
-var Postits = { 
+var Postits = {
 	'Timer': '',         // internal Postits timer variable
 	'Interval': 30000,   // check every xx milliseconds for new Postits (5000 ms := 5 sec, default: 30s)
 	'ActivateTimer': 1,  // 1.. activate timer (set to other value for debugging)
