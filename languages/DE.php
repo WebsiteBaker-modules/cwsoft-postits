@@ -13,7 +13,7 @@
  * @package     postits
  * @author      cwsoft (http://cwsoft.de)
  * @translation cwsoft
- * @version     1.2.1
+ * @version     1.3.0
  * @copyright   cwsoft
  * @license     http://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -27,6 +27,7 @@ if (defined('WB_PATH') == false) {
 $module_description = 'Modul zum Verschicken von Kurznachrichten (Postits) an andere Benutzer oder Gruppen. Weitere Infos auf <a href="https://github.com/cwsoft/wb-postits#readme" target="_blank">GitHub</a>.';
 
 // initialize global $LANG variable as array if needed
+global $LANG;
 if (! isset($LANG) || (isset($LANG) && ! is_array($LANG))) {
 	$LANG = array();
 }
@@ -56,7 +57,4 @@ $LANG['POSTITS'] = array(
 	'TXT_SEND_FAILED'       => 'Postits konnten nicht verschickt werden.',
 	'TXT_SELECT_RECIPIENTS' => 'W&auml;hle den oder die gew&uuml;nschten Empf&auml;nger aus der Benutzer- bzw. Gruppenliste aus. Eine Mehrfachauswahl ist m&ouml;glich.',
 	'TXT_ENTER_MESSAGE'     => 'Gebe die gew&uuml;nschte Kurznachricht (max. 150 Zeichen) in die Postits Form ein. Formatierungen und HTML Tags werden entfernt. Zum Versenden den Button "Postit abschicken" am unteren Rand anklicken.',
-	
-	// German date format
-	'DATE_FORMAT'           => 'd.m.Y H:m'
 );

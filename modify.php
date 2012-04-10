@@ -1,8 +1,8 @@
 <?php
 /*
- * Page module: PostIts
+ * Page module: Postits
  *
- * This module allows you to send virtual PostIts (sticky notes) to other users.
+ * This module allows you to send virtual Postits (sticky notes) to other users.
  * Requires some modification in the index.php file of the template.
  *
  * This file implements the backend view of the Postits module.
@@ -12,7 +12,7 @@
  * @platform    CMS WebsiteBaker 2.8.x
  * @package     postits
  * @author      cwsoft (http://cwsoft.de)
- * @version     1.2.0
+ * @version     1.3.0
  * @copyright   cwsoft
  * @license     http://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -33,7 +33,7 @@ require_once(WB_PATH . '/include/phplib/template.inc');
 $tpl = new Template(dirname(__FILE__) . '/templates');
 
 // configure handling of unknown {variables} (remove:=default, keep, comment)
-$tpl->set_unknowns('keep');
+$tpl->set_unknowns('remove');
 
 // configure debug mode (0:= default, 1:=variable assignments, 2:=calls to get variable, 4:=show internals)
 $tpl->debug = 0;
@@ -65,9 +65,10 @@ if ($results && $results->numRows() > 0) {
 	// display all unviewed messages sent by the user
 	while($row = $results->fetchRow()) {
 		$tpl->set_var(array(
-			'POSTED_WHEN'		=> date($LANG['POSTITS']['DATE_FORMAT'], $row['posted_when']),
-			'RECIPIENT_NAME'	=> $row['recipient_name'],
-			'MESSAGE'			=> substr(strip_tags($row['message']), 0, 40) . (strlen(strip_tags($row['message'])) > 39 ? ' ...' : '')
+			// convert posted time into the date/time format defined in user Preferences and add possible timezone to GMT/UTC timestamp
+			'POSTED_WHEN'    => date(sprintf("%s (%s)", DATE_FORMAT, TIME_FORMAT), $row['posted_when'] + (int) TIMEZONE),
+			'RECIPIENT_NAME' => $row['recipient_name'],
+			'MESSAGE'        => substr(strip_tags($row['message']), 0, 40) . (strlen(strip_tags($row['message'])) > 39 ? ' ...' : '')
 		));
 		
 		// add unread postits in append mode

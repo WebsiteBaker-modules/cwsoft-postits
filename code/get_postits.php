@@ -12,7 +12,7 @@
  * @platform    CMS WebsiteBaker 2.8.x
  * @package     postits
  * @author      cwsoft (http://cwsoft.de)
- * @version     1.2.1
+ * @version     1.3.0
  * @copyright   cwsoft
  * @license     http://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -57,7 +57,7 @@ while ($row = $results->fetchRow()) {
 	// create JSON object string
 	$json_postit .= '{'
 	. '"id": "' . $row['id'] . '", "message": "' . strip_tags($row['message'], '<br>')
-	. '", "sender": "' . htmlentities($row['sender_name']) . '<br />' . date($LANG['POSTITS']['DATE_FORMAT'], $row['posted_when'])
+	. '", "sender": "' . htmlentities($row['sender_name']) . '<br />' . date(sprintf("%s (%s)", DATE_FORMAT, TIME_FORMAT), $row['posted_when'] + (int) TIMEZONE)
 	. '"}, ';
 }
 

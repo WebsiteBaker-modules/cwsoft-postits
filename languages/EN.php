@@ -13,7 +13,7 @@
  * @package     postits
  * @author      cwsoft (http://cwsoft.de)
  * @translation	cwsoft
- * @version     1.2.1
+ * @version     1.3.0
  * @copyright   cwsoft
  * @license     http://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -27,6 +27,7 @@ if (defined('WB_PATH') == false) {
 $module_description = 'Module to send short messages (Postits) to other users or groups. For details visit <a href="https://github.com/cwsoft/wb-postits#readme" target="_blank">GitHub</a>.';
 
 // initialize global $LANG variable as array if needed
+global $LANG;
 if (! isset($LANG) || (isset($LANG) && ! is_array($LANG))) {
 	$LANG = array();
 }
@@ -57,7 +58,4 @@ $LANG['POSTITS'] = array(
 	'TXT_SEND_FAILED'       => 'Unable to submit your Postits.',
 	'TXT_SELECT_RECIPIENTS' => 'Select the recipients you want to send a sticky note from the users and/or groups list below. Multiselection of users/groups is supported.',
 	'TXT_ENTER_MESSAGE'     => 'Enter your short message (max. 150 characters) into the sticky note form below. HTML tags and formats will be removed. To send the Postit, press the "Submit Postits" button at the bottom.',
-	
-	// English date format
-	'DATE_FORMAT'           => 'm/d/y G:i'
 );

@@ -12,7 +12,7 @@
  * @platform    CMS WebsiteBaker 2.8.x
  * @package     postits
  * @author      cwsoft (http://cwsoft.de)
- * @version     1.2.1
+ * @version     1.3.0
  * @copyright   cwsoft
  * @license     http://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -117,6 +117,7 @@ $recipients = array_unique($recipients);
 // prepare data to write into database
 $sender_id = (int) $admin->get_session('USER_ID');
 $sender_name = $admin->add_slashes($admin->get_session('DISPLAY_NAME'));
+// store GMT/UTC time and convert to local user timezone in output only
 $posted_when = addslashes(time());
 
 // replace line breaks with <br /> tag

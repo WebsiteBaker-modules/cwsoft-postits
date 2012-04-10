@@ -12,7 +12,7 @@
  * @platform    CMS WebsiteBaker 2.8.x
  * @package     postits
  * @author      cwsoft (http://cwsoft.de)
- * @version     1.2.1
+ * @version     1.3.0
  * @copyright   cwsoft
  * @license     http://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -96,7 +96,8 @@ if (! ($access->is_authenticated() && $access->get_permission('postits', 'module
 		// display all unviewed messages sent by the user
 		while($row = $results->fetchRow()) {
 			$tpl->set_var(array(
-				'POSTED_WHEN'    => date($LANG['POSTITS']['DATE_FORMAT'], $row['posted_when']),
+				// convert posted time into the date/time format defined in user Preferences and add possible timezone to GMT/UTC timestamp
+				'POSTED_WHEN'    => date(sprintf("%s (%s)", DATE_FORMAT, TIME_FORMAT), $row['posted_when'] + (int) TIMEZONE),
 				'RECIPIENT_NAME' => $row['recipient_name'],
 				'MESSAGE'        => substr(strip_tags($row['message']), 0, 40) . (strlen(strip_tags($row['message'])) > 39 ? ' ...' : '')
 			));
