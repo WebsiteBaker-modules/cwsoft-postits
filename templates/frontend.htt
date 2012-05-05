@@ -40,7 +40,13 @@
 					<tr>
 						<td>{{ unread.RECIPIENT_NAME }}</td>
 						<td>{{ unread.POSTED_WHEN }}</td>
-						<td>{{ unread.MESSAGE }}</td>
+						<td>
+							{# shorten Postits message to 40 characters and add ... after truncated text #}
+							{{ unread.MESSAGE | slice(0,40) }}
+							{% if unread.MESSAGE | length > 40 %}
+							...
+							{% endif %}
+						</td>
 					</tr>
 				{% endfor %}
 				</tbody>
