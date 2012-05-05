@@ -1,90 +1,91 @@
-<script type="text/javascript">
-	$(document).ready(function() {
-		// prepare DOM to count characters in defined textarea
-		var maxChars = 150;
-		$('#mod_postits p.remainingChars').removeClass('hidden').find('span').html(maxChars);
-		
-		// evaluate keyup event of textarea element
-		$('#mod_postits textarea').keyup(function() {
-			var actualChars = $(this).val().length;
-			var remainingChars = maxChars - actualChars;
-			
-			if (remainingChars <= 0) {
-				$(this).val($(this).val().substr(0, maxChars));
-				remainingChars = 0;
-			}
-			$(this).parent().find('.remainingChars span').html(remainingChars);
-		});
-	});
-</script>
+{#
+/**
+ * Page module: Postits
+ *
+ * This module allows you to send virtual Postits (sticky notes) to other users.
+ * Requires some modification in the index.php file of the template.
+ *
+ * This file implements the frontend view of the Postits module.
+ * 
+ * LICENSE: GNU General Public License 3.0
+ * 
+ * @platform    CMS WebsiteBaker 2.8.x
+ * @package     postits
+ * @author      cwsoft (http://cwsoft.de)
+ * @version     1.4.0
+ * @copyright   cwsoft
+ * @license     http://www.gnu.org/licenses/gpl-3.0.html
+*/
+#}
+{% include 'count_characters.htt' %}
 
 <div id="mod_postits">
-	<h2>{TXT_SUBMITTED_POSTITS}</h2>
-	{TXT_LOGIN_REQUIRED}
-	{TXT_NO_PERMISSIONS}
-	{TXT_UNREAD_POSTS}
-	{TXT_ALL_POSTS_READ}
-
-	<!-- BEGIN unread_postits_block -->
-		<table class="postits">
-			<thead>
-				<tr>
-					<th>{TXT_RECIPIENT}</th>
-					<th>{TXT_SUBMITTED_WHEN}</th>
-					<th>{TXT_MESSAGE}</th>
-				</tr>
-			</thead>
-			
-			<tbody>
-				<!-- BEGIN unread_postits_list_block -->
-					<tr>
-						<td>{RECIPIENT_NAME}</td>
-						<td>{POSTED_WHEN}</td>
-						<td>{MESSAGE}</td>
-					</tr>
-				<!-- END unread_postits_list_block -->
-			</tbody>
-		</table>	
-	<!-- END unread_postits_block -->
+	<h2>{{ lang.TXT_SUBMITTED_POSTITS }}</h2>
+	{{ postits.STATUS_MESSAGE }}
 	
-	<!-- BEGIN submit_postits_block -->
+	{% if postits.AUTHENTICATED %}
 
-		<h2>{TXT_SUBMIT_POSTITS}</h2>
-		<form name="submit_postit" method="post" action="{URL_SUBMIT}">
-			<input type="hidden" name="page_id" value="{PAGE_ID}" />
+		{% if postits.unread %}
+			<table class="postits">
+				<thead>
+					<tr>
+						<th>{{ lang.TXT_RECIPIENT }}</th>
+						<th>{{ lang.TXT_SUBMITTED_WHEN }}</th>
+						<th>{{ lang.TXT_MESSAGE }}</th>
+					</tr>
+				</thead>
+			
+				<tbody>
+				{% for unread in postits.unread %}
+					<tr>
+						<td>{{ unread.RECIPIENT_NAME }}</td>
+						<td>{{ unread.POSTED_WHEN }}</td>
+						<td>{{ unread.MESSAGE }}</td>
+					</tr>
+				{% endfor %}
+				</tbody>
+		
+			</table>
+		{% endif %}
+	
+		<h2>{{ lang.TXT_SUBMIT_POSTITS }}</h2>
+		<form name="submit_postit" method="post" action="{{ postits.URL_SUBMIT }}">
+			<input type="hidden" name="page_id" value="{{ postits.PAGE_ID }}" />
+			{% block redirect_to_frontend %}
 			<input type="hidden" name="frontend" value="1" />
+			{% endblock %}
 
 			<fieldset>
-				<legend>{TXT_RECIPIENT}</legend>
-				<p>{TXT_SELECT_RECIPIENTS}</p>
+				<legend>{{ lang.TXT_RECIPIENT }}</legend>
+				<p>{{ lang.TXT_SELECT_RECIPIENTS }}</p>
 			
 				<div class="select">
-					<label for="users" accesskey="u">{TXT_USER}: </label>
+					<label for="users" accesskey="u">{{ lang.TXT_USER }}: </label>
 					<select id="users" name="users[]" size="5" multiple="multiple">
-						{OPTION_USER_NAMES}
+						{{ postits.OPTION_USER_NAMES }}
 					</select>
 				</div>
 			
 				<div class="select">
-					<label for="groups" accesskey="g">{TXT_GROUP}: </label>
+					<label for="groups" accesskey="g">{{ lang.TXT_GROUP }}: </label>
 					<select id="groups" name="groups[]" size="5" multiple="multiple">
-						{OPTION_GROUP_NAMES}
+						{{ postits.OPTION_GROUP_NAMES }}
 					</select>
 				</div>
 			</fieldset>		
 
 			<fieldset>
-				<legend>{TXT_MESSAGE}</legend>
-				<p>{TXT_ENTER_MESSAGE}</p>
+				<legend>{{ lang.TXT_MESSAGE }}</legend>
+				<p>{{ lang.TXT_ENTER_MESSAGE }}</p>
 
 				<div class="message">
-					<label for="message" accesskey="m">{TXT_MESSAGE}: </label>
+					<label for="message" accesskey="m">{{ lang.TXT_MESSAGE }}: </label>
 					<textarea id="message" name="message" rows="13" cols="40"></textarea>
-					<p class="remainingChars hidden">{TXT_REMAINING_CHARS}: <span></span></p>
+					<p class="remainingChars hidden">{{ lang.TXT_REMAINING_CHARS }}: <span></span></p>
 				</div>
 			</fieldset>		
 
-			<button type="submit">{TXT_SUBMIT}</button>
+			<button type="submit">{{ lang.TXT_SUBMIT }}</button>
 		</form>	
-	<!-- END submit_postits_block -->
+	{% endif %}
 </div>

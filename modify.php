@@ -12,7 +12,7 @@
  * @platform    CMS WebsiteBaker 2.8.x
  * @package     postits
  * @author      cwsoft (http://cwsoft.de)
- * @version     1.3.0
+ * @version     1.4.0
  * @copyright   cwsoft
  * @license     http://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -27,64 +27,61 @@ $lang = dirname(__FILE__) . '/languages/' . basename(LANGUAGE) . '.php';
 require_once (! file_exists($lang) ? dirname(__FILE__) . '/languages/EN.php' : $lang);
 
 /**
- * Create template object and configure it
+ * Create Twig template object and configure it
  */
-require_once(WB_PATH . '/include/phplib/template.inc');
-$tpl = new Template(dirname(__FILE__) . '/templates');
-
-// configure handling of unknown {variables} (remove:=default, keep, comment)
-$tpl->set_unknowns('remove');
-
-// configure debug mode (0:= default, 1:=variable assignments, 2:=calls to get variable, 4:=show internals)
-$tpl->debug = 0;
-
-// include template files
-$tpl->set_file('page', 'backend.htt');
-
-// define required template blocks
-$tpl->set_block('page', 'unread_postits_list_block', 'unread_postits_list_block_handle');
-$tpl->set_block('page', 'unread_postits_block', 'unread_postits_block_handle');
-
-// replace template placeholder with text from language file
-foreach($LANG['POSTITS'] as $key => $value) {
-	$tpl->set_var($key, $value);
-}
+require_once ('thirdparty/Twig/Twig/Autoloader.php');
+Twig_Autoloader::register();
+$loader = new Twig_Loader_Filesystem(dirname(__FILE__) . '/templates');
+$twig = new Twig_Environment($loader, array(
+	'autoescape'       => false,
+	'cache'            => false,
+	'strict_variables' => true,
+	'debug'            => false,
+));
+        
+// load Postits frontend template
+$tpl = $twig->loadTemplate('backend.htt');
 
 /**
- * Prepare the Postits status part of the template 
+ * Add WB_URL and Postits language text to template variable
+ * Access via: {{ WB_URL }}, {{ lang.KEY }}
  */
-// extract Postits sent by the logged in user which are not yet read by the recipients
+$data = array();
+$data['WB_URL'] = WB_URL; 
+foreach ($LANG['POSTITS'] as $key => $value) {
+	$data['lang'][$key] = $value;
+}
+
+// module backend view is authenticated by WebsiteBaker itself, so no extra code required here 
+$data['postits']['AUTHENTICATED'] = true;
+
+/**
+ * Add Postits submitted by the logged in user but not yet read by the recipient(s) to template data {{ postits.unread }} 
+ */
 $table = TABLE_PREFIX . 'mod_postits';
 $sql = "SELECT * FROM `$table` WHERE `sender_id`='" . $admin->add_slashes((int) $_SESSION['USER_ID']) . "' AND `viewed`='0' ORDER BY `id` ASC";
 $results = $database->query($sql);   
 
+$data['postits']['unread'] = array();
 if ($results && $results->numRows() > 0) {
-	// remove/hide template elements not required and add new block
-	$tpl->set_var('TXT_ALL_POSTS_READ', '');
-
-	// display all unviewed messages sent by the user
+	
 	while($row = $results->fetchRow()) {
-		$tpl->set_var(array(
+		$data['postits']['unread'][] = array(
 			// convert posted time into the date/time format defined in user Preferences and add possible timezone to GMT/UTC timestamp
 			'POSTED_WHEN'    => date(sprintf("%s (%s)", DATE_FORMAT, TIME_FORMAT), $row['posted_when'] + (int) TIMEZONE),
 			'RECIPIENT_NAME' => $row['recipient_name'],
 			'MESSAGE'        => substr(strip_tags($row['message']), 0, 40) . (strlen(strip_tags($row['message'])) > 39 ? ' ...' : '')
-		));
-		
-		// add unread postits in append mode
-		$tpl->parse('unread_postits_list_block_handle', 'unread_postits_list_block', true);
+		);
 	}
-	// add the unread postits block
-	$tpl->parse('unread_postits_block_handle', 'unread_postits_block', false);
+	
+	$data['postits']['STATUS_MESSAGE'] = $LANG['POSTITS']['TXT_UNREAD_POSTS'];
 
 } else {
-	// no unviewed posts available (remove template elements not required)
-	$tpl->set_var('unread_postits_block_handle', '');
-	$tpl->set_var('TXT_UNREAD_POSTS', '');
+	$data['postits']['STATUS_MESSAGE'] = $LANG['POSTITS']['TXT_ALL_POSTS_READ'];
 }
 
 /**
- * Prepare the submit Postits part of the template 
+ * Add Postits submit part to the template 
  */
 // fetch registered users from database
 $table = TABLE_PREFIX . 'users';
@@ -109,13 +106,12 @@ while ($results && $row = $results->fetchRow()) {
 }
 
 // update template variables
-$tpl->set_var(array(
-	'URL_SUBMIT'			=> WB_URL . '/modules/postits/code/store_postits.php',
-	'PAGE_ID'				=> (int) $page_id,
-	'OPTION_USER_NAMES'		=> $user_options,
-	'OPTION_GROUP_NAMES'	=> $group_options
-	)
-);
+$data['postits'] = array_merge($data['postits'], array(
+	'URL_SUBMIT'         => WB_URL . '/modules/postits/code/store_postits.php',
+	'PAGE_ID'            => (int) $page_id,
+	'OPTION_USER_NAMES'  => $user_options,
+	'OPTION_GROUP_NAMES' => $group_options
+));
 
 // ouput the final template
-$tpl->pparse('output', 'page');
+$tpl->display($data);

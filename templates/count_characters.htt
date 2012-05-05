@@ -1,0 +1,19 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+		// prepare DOM to count characters in defined textarea
+		var maxChars = 150;
+		$('#mod_postits p.remainingChars').removeClass('hidden').find('span').html(maxChars);
+		
+		// evaluate keyup event of textarea element
+		$('#mod_postits textarea').keyup(function() {
+			var actualChars = $(this).val().length;
+			var remainingChars = maxChars - actualChars;
+			
+			if (remainingChars <= 0) {
+				$(this).val($(this).val().substr(0, maxChars));
+				remainingChars = 0;
+			}
+			$(this).parent().find('.remainingChars span').html(remainingChars);
+		});
+	});
+</script>
