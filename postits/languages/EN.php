@@ -13,7 +13,6 @@
  * @package     postits
  * @author      cwsoft (http://cwsoft.de)
  * @translation	cwsoft
- * @version     1.3.0
  * @copyright   cwsoft
  * @license     http://www.gnu.org/licenses/gpl-3.0.html
 */
