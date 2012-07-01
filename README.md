@@ -19,7 +19,7 @@ The minimum requirements to get Postits running are as follows:
 
 ## Installation
 
-1. download [Postits v1.5.0](https://github.com/downloads/cwsoft/wb-postits/cwsoft-wb-postits-v1.5.0.zip) WebsiteBaker installation package
+1. download [Postits v1.6.0](https://github.com/downloads/cwsoft/wb-postits/cwsoft-wb-postits-v1.6.0.zip) WebsiteBaker installation package
 2. log into your WebsiteBaker backend and go to the `Add-ons/Modules` section
 3. install the downloaded zip archive via the WebsiteBaker installer
 4. go to the pages section and create a new page of type `Postits`
@@ -41,7 +41,7 @@ Change the lines above as follows:
 		register_frontend_modfiles('css');
 		register_frontend_modfiles('jquery');
         // ensure Postits show up on all frontend pages
-        echo '<script src="' . WB_URL . '/modules/postits/javascript/postits.js" type="text/javascript"></script>';
+        echo '<script src="' . WB_URL . '/modules/cwsoft-postits/javascript/postits.js" type="text/javascript"></script>';
 		register_frontend_modfiles('js');
 	}
 
@@ -63,8 +63,8 @@ Change the lines above as follows:
 	<script src="{WB_URL}/include/jquery/jquery-ui-min.js" type="text/javascript"></script>
 	<script src="{WB_URL}/include/jquery/jquery-insert.js" type="text/javascript"></script>
 	<script src="{WB_URL}/include/jquery/jquery-include.js" type="text/javascript"></script>
-	<link href="{WB_URL}/modules/postits/css/postits.css" rel="stylesheet" type="text/css" />
-	<script src="{WB_URL}/modules/postits/javascript/postits.js" type="text/javascript"></script>
+	<link href="{WB_URL}/modules/cwsoft-postits/css/postits.css" rel="stylesheet" type="text/css" />
+	<script src="{WB_URL}/modules/cwsoft-postits/javascript/postits.js" type="text/javascript"></script>
 
 Postits will now also appear in the backend part of your WebsiteBaker intallation.
 
