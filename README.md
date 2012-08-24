@@ -28,7 +28,7 @@ The minimum requirements to get `cwsoft-postits` running are as follows:
 
 ### Frontend template modifications (OBLIGATORY)
 
-Visit the Postit page you created in your frontend. If you see a JavaScript message, you need to adapt the ***index.php*** of your frontend template. Open your WebsiteBaker frontend template file ***index.php*** in the [Addon File Editor](https://github.com/cwsoft/wb-addon-file-editor#readme) and search for the following lines. 
+Visit the Postit page you created in your frontend. If you see a JavaScript message, you need to adapt the ***index.php*** of your frontend template. Open your WebsiteBaker frontend template file ***index.php*** in the [cwsoft-addon-file-editor](https://github.com/cwsoft/wb-addon-file-editor#readme) and search for the following lines. 
 
 	if (function_exists('register_frontend_modfiles')) {
 		register_frontend_modfiles('css');
