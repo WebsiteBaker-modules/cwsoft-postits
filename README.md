@@ -6,11 +6,11 @@ The `cwsoft-postits` module allows logged in users to send short text messages (
 The released stable `cwsoft-postits` installation packages for the WebsiteBaker CMS can be found in the [GitHub download area](https://github.com/cwsoft/wb-postits/downloads). It is recommended to install/update to the latest available version listed. Older versions are provided for compatibility reasons with older WebsiteBaker versions and may contain bugs or security issues. The development history of the Postits module can be tracked via [GitHub](https://github.com/cwsoft/wb-postits).
 
 ## License
-The cwsoft-postits module is licensed under the [GNU General Public License (GPL) v3.0](http://www.gnu.org/licenses/gpl-3.0.html).
+The `cwsoft-postits` module is licensed under the [GNU General Public License (GPL) v3.0](http://www.gnu.org/licenses/gpl-3.0.html).
 
 ## Requirements
 
-The minimum requirements to get cwsoft-postits running are as follows:
+The minimum requirements to get `cwsoft-postits` running are as follows:
 
 - WebsiteBaker ***2.8.2*** or higher (recommended last stable 2.8.x version)
 - PHP ***5.2.2*** or higher (recommended last stable PHP 5.3.x version)
@@ -51,7 +51,7 @@ If it doesn't work, check if JavaScript is enabled in your browser. Ensure you a
 
 ### Backend template modifications (OPTIONAL)
 
-If you want to show Postits also in the backend part of WebsiteBaker, you need to modify the template file ***header.htt*** of your backend theme. For the default backend theme of WebsiteBaker 2.8.3, the file is found at */templates/wb_theme/templates/header.htt*. Open the file with the [cwsot-addon-file-editor](https://github.com/cwsoft/wb-addon-file-editor#readme) and search for the following lines at the top of the file.
+If you want to show Postits also in the backend part of WebsiteBaker, you need to modify the template file ***header.htt*** of your backend theme. For the default backend theme of WebsiteBaker 2.8.3, the file is found at */templates/wb_theme/templates/header.htt*. Open the file with the [cwsoft-addon-file-editor](https://github.com/cwsoft/wb-addon-file-editor#readme) and search for the following lines at the top of the file.
 
 	<script src="{WB_URL}/include/jquery/jquery-min.js" type="text/javascript"></script>
 	<script src="{WB_URL}/include/jquery/jquery-insert.js" type="text/javascript"></script>
