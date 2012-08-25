@@ -1,6 +1,6 @@
 <?php
 /*
- * Page module: Postits
+ * Page module: cwsoft-postits
  *
  * This module allows you to send virtual Postits (sticky notes) to other users.
  * Requires some modification in the index.php file of the template.
@@ -18,7 +18,7 @@
 
 // OBLIGATORY WEBSITE BAKER VARIABLES
 $module_directory      = 'cwsoft-postits';
-$module_name           = 'cwsoft - Postits';
+$module_name           = 'cwsoft-postits';
 $module_function       = 'page';
 $module_version        = '1.6.0';
 $module_status         = 'STABLE';

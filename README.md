@@ -22,7 +22,7 @@ The minimum requirements to get `cwsoft-postits` running are as follows:
 1. download [cwsoft-postits v1.6.0](https://github.com/downloads/cwsoft/wb-postits/cwsoft-postits-v1.6.0.zip) WebsiteBaker installation package
 2. log into your WebsiteBaker backend and go to the `Add-ons/Modules` section
 3. install the downloaded zip archive via the WebsiteBaker installer
-4. go to the pages section and create a new page of type `cwsoft-Postits`
+4. go to the pages section and create a new page of type `cwsoft-postits`
 5. select your username from the users group and enter a short Postit message
 6. press the "Submit Postit" button to send the Postit
 
@@ -70,7 +70,7 @@ Postits will now also appear in the backend part of your WebsiteBaker intallatio
 
 ## Usage
 
-If you followed all steps above, it's time to play with Postits. Log into WebsiteBaker backend and create a new page of type `cwsoft-Postits`. Select the users or groups you want to send a Postit. Make use of multi-selection to send the same message to several users at the same time. Type in a message (max. 150 characters) and press the submit button.
+If you followed all steps above, it's time to play with the `cwsoft-postits` module. Log into WebsiteBaker backend and create a new page of type `cwsoft-postits`. Select the users or groups you want to send a Postit. Make use of multi-selection to send the same message to several users at the same time. Type in a message (max. 150 characters) and press the submit button.
 
 A screenshot of the backend and frontend view of the cwsoft-postits module is shown below.
 
@@ -85,15 +85,15 @@ A screenshot of the backend and frontend view of the cwsoft-postits module is sh
 ***Note:*** Postits only appear in the frontend/backend of Website Baker, if the PostIt recipient is loged in.
 
 ## Known Issues
-You can track the status of known issues or report new issues found in cwsoft-postits via GitHubs [issue tracking service](https://github.com/cwsoft/wb-postits/issues). If you run into any issues with Postits, please visit this page first and check if this issue is already known.
+You can track the status of known issues or report new issues found in `cwsoft-postits` via GitHubs [issue tracking service](https://github.com/cwsoft/wb-postits/issues). If you run into any issues with Postits, please visit this page first and check if this issue is already known.
 
 ## Questions
-If you have questions or issues with the cwsoft-postits module, please visit the [English](http://www.websitebaker2.org/forum/index.php/topic,4548.msg157963.html#msg157963) or [German](http://www.websitebaker2.org/forum/index.php/topic,13124.msg157962.html#msg157962) WebsiteBaker forum support threads and ask for feedback.
+If you have questions or issues with the `cwsoft-postits` module, please visit the [English](http://www.websitebaker2.org/forum/index.php/topic,4548.msg157963.html#msg157963) or [German](http://www.websitebaker2.org/forum/index.php/topic,13124.msg157962.html#msg157962) WebsiteBaker forum support threads and ask for feedback.
 
 ***Always provide the following information with your support request:***
 
  - detailed error description (what happens, what have you already tried ...)
- - the cwsoft-postits version (go to WebsiteBaker section Add-ons / Info / Postits)
+ - the `cwsoft-postits` version (go to WebsiteBaker section Add-ons / Info / cwsoft-postits)
  - your PHP version (use phpinfo(); or ask your provider if in doubt)
  - WebsiteBaker version, Service Pack number and build number of your version
  - name of the WebsiteBaker frontent template used (e.g. round, allcss ...)

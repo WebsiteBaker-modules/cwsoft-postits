@@ -1,5 +1,5 @@
 /*
- * Page module: Postits
+ * Page module: cwsoft-postits
  *
  * This module allows you to send virtual PostIts (sticky notes) to other users.
  * Requires some modification in the index.php file of the template.
@@ -19,7 +19,7 @@
 // display message if jQuery is not loaded via register_frontend_modfiles
 if (typeof jQuery == 'undefined' || typeof(WB_URL) == "undefined" || typeof(Postits) == "undefined") {
 	// create a message to be displayed to the user
-	msg = "Sorry, your template is not yet ready to use the PostIts module.";
+	msg = "Sorry, your template is not yet ready to use the cwsoft-postits module.";
 	msg += "\nEnsure the code below exists within the </head></head> section of your frontend template 'index.php' file.";
 	msg += "\nIt is important to keep the exact order of code lines as shown below.";
 	msg += "\n\n<?php";
@@ -30,8 +30,8 @@ if (typeof jQuery == 'undefined' || typeof(WB_URL) == "undefined" || typeof(Post
 	msg += "\n        echo '<script src=\"' . WB_URL . '/modules/cwsoft-postits/javascript/postits.js\" type=\"text/javascript\"></script>';";
 	msg += "\n        register_frontend_modfiles('js');"
 	msg += "\n    }\n?>";
-	msg += "\n\nTip: Template modifications can be easily done with the WebsiteBaker admin tool AFE.";
-	msg	+= "\nDownload AFE: https://github.com/cwsoft/wb-addon-file-editor#readme.";
+	msg += "\n\nTip: Template modifications can be easily done with the WebsiteBaker admin tool cwsoft-addon-file-editor.";
+	msg	+= "\nDownload cwsoft-addon-file-editor: https://github.com/cwsoft/wb-addon-file-editor#readme.";
 	
 	// output status message so user is aware that he needs to modify his template
 	alert(msg);
