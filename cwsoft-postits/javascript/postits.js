@@ -20,8 +20,7 @@ var Postits = {
 	'Timer': '',         // internal Postits timer variable
 	'Interval': 30000,   // check every xx milliseconds for new Postits (5000 ms := 5 sec, default: 30s)
 	'ActivateTimer': 1,  // 1.. activate timer (set to other value for debugging)
-	'ShowMax': 99,       // maximum number of Postits shown at once
-	'ShowGif': 1         // 1.. show Postit GIF as background, 0.. display a "window style" div 
+	'ShowMax': 10        // maximum number of Postits shown at once
 };
 
 // function is executed if DOM is ready
@@ -73,28 +72,16 @@ function addPostits(result)
 		if (jQuery('#postit_' + result.Data[i].id).length > 0) continue;
 		
 		// set starting position
-		var x = 300 + (i % 10) * 30 + Math.floor(i/10) * 170;
-		var y = 200 + (i % 10) * 20;
+		var x = (i % 10) * 30 + Math.floor(i/10) * 250;
+		var y = (i % 10) * 45;
 
 		// create a div container for each postit
-		if (Postits.ShowGif == 1) {
-			jQuery('<div id="postit_' + result.Data[i].id + '" class="postits gif" style="left: ' + x + 'px; top: ' + y + 'px"></div>')
-			.append('<a href="#" class="gif"></a>')
-			.append('<p class="gif">' + result.Data[i].message + '</p>')
-			.append('<p class="sendby">' + result.Data[i].sender + '</p>')
-			.appendTo('body')
-			.hide().fadeIn('slow')
-			.draggable({'containment' : 'html'});
-		}
-		else {
-			jQuery('<div id="postit_' + result.Data[i].id + '" class="postits txt" style="left: ' + x + 'px; top: ' + y + 'px"></div>')
-			.append('<div class="header">Postit #' + i + '<a href="#"></a></div>')
-			.append('<p>' + result.Data[i].message + '</p>')
-			.append('<p class="sendby">' + result.Data[i].sender + '</p>')
-			.appendTo('body')
-			.hide().fadeIn('slow')
-			.draggable({'containment' : 'html'});
-		}
+		jQuery('<div id="postit_' + result.Data[i].id + '" class="postits taped" style="position: absolute; left: ' + x + 'px; top: ' + y + 'px"></div>')
+		.append('<a href="#"></a>')
+		.append('<ul><li class="caption">Postit #' + (i + 1) + '</li><li class="message">' + result.Data[i].message + '</li><li class="author">' + result.Data[i].sender + '</li></ul>')
+		.appendTo('body')
+		.hide().fadeIn('slow')
+		.draggable({'containment' : 'html'});
 
 		// assign click function to remove Postit from the DOM
 		jQuery('#postit_' + result.Data[i].id + ' a').click(function()

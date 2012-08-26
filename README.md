@@ -70,19 +70,19 @@ Postits will now also appear in the backend part of your WebsiteBaker intallatio
 
 ## Usage
 
-If you followed all steps above, it's time to play with the `cwsoft-postits` module. Log into WebsiteBaker backend and create a new page of type `cwsoft-postits`. Select the users or groups you want to send a Postit. Make use of multi-selection to send the same message to several users at the same time. Type in a message (max. 150 characters) and press the submit button.
+If you followed all steps above, it's time to play with the `cwsoft-postits` module. Log into WebsiteBaker backend and create a new page of type `cwsoft-postits`. Select the users or groups you want to send a Postit (1). Make use of multi-selection to send the same message to several users at the same time. Type in a message (max. 150 characters) into the Postit form field (2) and press the submit button (3).
 
 A screenshot of the backend and frontend view of the cwsoft-postits module is shown below.
 
 ***Backend view:***
 
-![](https://github.com/cwsoft/wb-postits/raw/master/.screenshots/postits_backend_view.png) 
+![](https://github.com/cwsoft/wb-postits/raw/master/.screenshots/cwsoft-postits-backend-view.png) 
 
 ***Frontend view:***
 
-![](https://github.com/cwsoft/wb-postits/raw/master/.screenshots/postits_frontend_view.png) 
+![](https://github.com/cwsoft/wb-postits/raw/master/.screenshots/cwsoft-postits-frontend-view.png) 
 
-***Note:*** Postits only appear in the frontend/backend of Website Baker, if the PostIt recipient is loged in.
+***Note:*** Postits only appear in the frontend/backend of Website Baker, if the PostIt recipient is loged in. The Postits can be moved with the mouse and deleted by clicking the (x) icon in the top right Postits corner.
 
 ## Known Issues
 You can track the status of known issues or report new issues found in `cwsoft-postits` via GitHubs [issue tracking service](https://github.com/cwsoft/wb-postits/issues). If you run into any issues with Postits, please visit this page first and check if this issue is already known.

@@ -64,7 +64,9 @@ function getTemplateData()
 	require_once(WB_PATH . '/framework/class.admin.php');
 	$access = new admin('Modules', 'module_view', false, false);	
 	
-	$data['postits']['AUTHENTICATED'] = true;	
+	$data['postits']['AUTHENTICATED'] = true;
+	$data['postits']['AUTHOR'] = '';
+	$data['postits']['SUBMITTED_WHEN'] = '';
 	if (! ($access->is_authenticated() && $access->get_permission('cwsoft-postits', 'module'))) {
 		$data['postits']['AUTHENTICATED'] = false;	
 		
@@ -77,6 +79,10 @@ function getTemplateData()
 		$data['postits']['unread'] = array();
 		return $data;
 	}
+	
+	// store Postits author
+	$data['postits']['SUBMITTED_WHEN'] = date(sprintf("%s (%s)", DATE_FORMAT, TIME_FORMAT), time() + (int) TIMEZONE);
+	$data['postits']['AUTHOR'] = $admin->add_slashes($admin->get_session('DISPLAY_NAME'));
 	
 	/**
 	 * Make Postits submitted by current user but not yet read by the recipient(s) accessible in template {{ postits.unread }} 
@@ -138,4 +144,23 @@ function getTemplateData()
 
 	// return template data
 	return $data;
+}
+
+function getPostitsVersion() {
+	// returns the actual installed AFE version (vX.Y.Z)
+	require_once(dirname(__FILE__) . '/../info.php');
+	return 'v' . $module_version;
+}
+
+function getReadmeUrl($afe_version) {
+	// returns the Url to the GitHub README for the installed AFE version
+	$url = 'https://github.com/cwsoft/wb-addon-file-editor/#readme';
+	
+	if (preg_match('#(v\d*\.\d*\.\d*)(.*)#i', $afe_version, $match)) {
+		// only stable versions (vX.Y.Z) are tagged at GitHub
+		if (! $match[2]) {
+			$url = 'https://github.com/cwsoft/wb-addon-file-editor/tree/' . $match[1] . '#readme';
+		}
+	}
+	return $url;
 }

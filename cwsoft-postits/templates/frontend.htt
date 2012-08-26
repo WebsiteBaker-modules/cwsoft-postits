@@ -86,11 +86,19 @@
 				<legend>{{ lang.TXT_MESSAGE }}</legend>
 				<p>{{ lang.TXT_ENTER_MESSAGE }}</p>
 
-				<div class="message">
-					<label for="message" accesskey="m">{{ lang.TXT_MESSAGE }}: </label>
-					<textarea id="message" name="message" rows="13" cols="40"></textarea>
-					<p class="remainingChars hidden">{{ lang.TXT_REMAINING_CHARS }}: <span></span></p>
+				<div class="postits taped">
+					<ul>
+						<li class="caption">{{ lang.TXT_MESSAGE }}</li>
+						<li class="message">
+							<textarea id="message" name="message" rows="8" cols="30"></textarea>
+						</li>
+						<li class="author">
+							{{ postits.AUTHOR }}<br />
+							{{ postits.SUBMITTED_WHEN }}
+						</li>
+					</ul>
 				</div>
+				<p class="remainingChars hidden">{{ lang.TXT_REMAINING_CHARS }}: <span></span></p>
 			</fieldset>		
 
 			<button type="submit">{{ lang.TXT_SUBMIT }}</button>

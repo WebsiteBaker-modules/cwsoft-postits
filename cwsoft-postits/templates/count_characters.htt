@@ -31,7 +31,7 @@
 				$(this).val($(this).val().substr(0, maxChars));
 				remainingChars = 0;
 			}
-			$(this).parent().find('.remainingChars span').html(remainingChars);
+			$('.remainingChars span').html(remainingChars);
 		});
 	});
 </script>
