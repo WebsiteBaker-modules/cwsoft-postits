@@ -35,6 +35,23 @@ function getTemplateData()
 	$data['WB_URL'] = WB_URL; 
 	
 	/**
+	 * Obtain module name, module version and link to GitHub README
+	 */
+	require_once(dirname(__FILE__) . '/../info.php');
+	$data['postits']['NAME'] = $module_name;
+	$data['postits']['VERSION'] = 'v' . $module_version;
+	
+	// obtain Url to the GitHub README for the installed cwsoft-postits version
+	$data['postits']['HELP_URL'] = 'https://github.com/cwsoft/wb-postits/#readme';
+	
+	if (preg_match('#(v\d*\.\d*\.\d*)(.*)#i', $data['postits']['VERSION'], $match)) {
+		// only stable versions (vX.Y.Z) are tagged at GitHub
+		if (! $match[2]) {
+			$data['postits']['HELP_URL'] = 'https://github.com/cwsoft/wb-postits/tree/' . $match[1] . '#readme';
+		}
+	}	
+	
+	/**
 	 * Make Postits language data accessible in template {{ lang.KEY }} 
  	 */
 	foreach ($LANG['POSTITS'] as $key => $value) {
@@ -121,4 +138,23 @@ function getTemplateData()
 
 	// return template data
 	return $data;
+}
+
+function getPostitsVersion() {
+	// returns the actual installed AFE version (vX.Y.Z)
+	require_once(dirname(__FILE__) . '/../info.php');
+	return 'v' . $module_version;
+}
+
+function getReadmeUrl($afe_version) {
+	// returns the Url to the GitHub README for the installed AFE version
+	$url = 'https://github.com/cwsoft/wb-addon-file-editor/#readme';
+	
+	if (preg_match('#(v\d*\.\d*\.\d*)(.*)#i', $afe_version, $match)) {
+		// only stable versions (vX.Y.Z) are tagged at GitHub
+		if (! $match[2]) {
+			$url = 'https://github.com/cwsoft/wb-addon-file-editor/tree/' . $match[1] . '#readme';
+		}
+	}
+	return $url;
 }

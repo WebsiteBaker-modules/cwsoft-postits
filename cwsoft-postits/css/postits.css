@@ -207,3 +207,19 @@ div.postits p.sendby {
 #mod_postits p.hidden {
 	visibility: hidden;
 }
+
+#mod_postits h4.module_info {
+	height: 1.5em;
+	margin-bottom: 1.5em;
+	padding: 0.3em;
+	border: 1px solid #DDD;
+	background-color: #eee;
+}
+
+#mod_postits h4.module_info a  {
+	display: block;
+	margin-top: -1.1em;
+	padding-right: 4em;
+	text-align: right;
+	font-weight: normal;
+}

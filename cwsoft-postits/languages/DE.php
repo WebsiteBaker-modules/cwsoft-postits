@@ -42,6 +42,8 @@ $LANG['POSTITS'] = array(
 	'TXT_RECIPIENT'         => 'Empf&auml;nger',
 	'TXT_USER'              => 'Benutzer',
 	'TXT_GROUP'             => 'Gruppe',
+	'TXT_MODULE_TYPE'       => 'Seitenmodul',
+	'TXT_HELP'              => 'Hilfe',
 	
 	// submit PostIts 
 	'TXT_SUBMIT_POSTITS'    => 'Neue Postits versenden',

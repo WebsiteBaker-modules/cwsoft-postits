@@ -18,5 +18,12 @@
 #}
 {% extends "frontend.htt" %}
 
+{% block show_help %}
+	<h4 class="module_info">
+		{{ lang.TXT_MODULE_TYPE }} &nbsp;&raquo;&nbsp;{{ postits.NAME }}
+		<a href="{{ postits.HELP_URL }} " target="_blank">[ {{ lang.TXT_HELP }} ]</a>
+	</h4>	
+{% endblock %}
+
 {% block redirect_to_frontend %}
 {% endblock %}

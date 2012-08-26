@@ -19,6 +19,9 @@
 {% include 'count_characters.htt' %}
 
 <div id="mod_postits">
+	{% block show_help %}
+	{% endblock %}
+	
 	<h2>{{ lang.TXT_SUBMITTED_POSTITS }}</h2>
 	{{ postits.STATUS_MESSAGE }}
 	
