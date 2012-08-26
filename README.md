@@ -19,7 +19,7 @@ The minimum requirements to get `cwsoft-postits` running are as follows:
 
 ## Installation
 
-1. download [cwsoft-postits v1.6.0](https://github.com/downloads/cwsoft/wb-postits/cwsoft-postits-v1.6.0.zip) WebsiteBaker installation package
+1. download [cwsoft-postits v1.7.0](https://github.com/downloads/cwsoft/wb-postits/cwsoft-postits-v1.6.7.zip) WebsiteBaker installation package
 2. log into your WebsiteBaker backend and go to the `Add-ons/Modules` section
 3. install the downloaded zip archive via the WebsiteBaker installer
 4. go to the pages section and create a new page of type `cwsoft-postits`
