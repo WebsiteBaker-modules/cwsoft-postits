@@ -3,7 +3,7 @@
 The `cwsoft-postits` module allows logged in users to send short text messages (150 characters) to other users or groups via the [WebsiteBaker CMS](http://www.websitebaker2.org) frontend or backend. The Postits (sticky notes) are automatically faded into the frontend and/or backend view, once the recipient has logged into WebsiteBaker, no matter which page is displayed in the browser. The sender can check whether his note was already read by the recipient.
 
 ## Download
-The released stable `cwsoft-postits` installation packages for the WebsiteBaker CMS can be found in the [GitHub download area](https://github.com/cwsoft/wb-postits/downloads). It is recommended to install/update to the latest available version listed. Older versions are provided for compatibility reasons with older WebsiteBaker versions and may contain bugs or security issues. The development history of the Postits module can be tracked via [GitHub](https://github.com/cwsoft/wb-postits).
+The released stable `cwsoft-postits` installation packages for the WebsiteBaker CMS can be found in the [GitHub download area](https://github.com/cwsoft/wb-cwsoft-postits/downloads). It is recommended to install/update to the latest available version listed. Older versions are provided for compatibility reasons with older WebsiteBaker versions and may contain bugs or security issues. The development history of the Postits module can be tracked via [GitHub](https://github.com/cwsoft/wb-cwsoft-postits).
 
 ## License
 The `cwsoft-postits` module is licensed under the [GNU General Public License (GPL) v3.0](http://www.gnu.org/licenses/gpl-3.0.html).
@@ -19,7 +19,7 @@ The minimum requirements to get `cwsoft-postits` running are as follows:
 
 ## Installation
 
-1. download [cwsoft-postits v1.7.0](https://github.com/downloads/cwsoft/wb-postits/cwsoft-postits-v1.7.0.zip) WebsiteBaker installation package
+1. download [cwsoft-postits v1.8.0](https://github.com/downloads/cwsoft/wb-cwsoft-postits/cwsoft-postits-v1.8.0.zip) WebsiteBaker installation package
 2. log into your WebsiteBaker backend and go to the `Add-ons/Modules` section
 3. install the downloaded zip archive via the WebsiteBaker installer
 4. go to the pages section and create a new page of type `cwsoft-postits`
@@ -28,7 +28,7 @@ The minimum requirements to get `cwsoft-postits` running are as follows:
 
 ### Frontend template modifications (OBLIGATORY)
 
-Visit the Postit page you created in your frontend. If you see a JavaScript message, you need to adapt the ***index.php*** of your frontend template. Open your WebsiteBaker frontend template file ***index.php*** in the [cwsoft-addon-file-editor](https://github.com/cwsoft/wb-addon-file-editor#readme) and search for the following lines. 
+Visit the Postit page you created in your frontend. If you see a JavaScript message, you need to adapt the ***index.php*** of your frontend template. Open your WebsiteBaker frontend template file ***index.php*** in the [cwsoft-addon-file-editor](https://github.com/cwsoft/wb-cwsoft-addon-file-editor#readme) and search for the following lines. 
 
 	if (function_exists('register_frontend_modfiles')) {
 		register_frontend_modfiles('css');
@@ -51,7 +51,7 @@ If it doesn't work, check if JavaScript is enabled in your browser. Ensure you a
 
 ### Backend template modifications (OPTIONAL)
 
-If you want to show Postits also in the backend part of WebsiteBaker, you need to modify the template file ***header.htt*** of your backend theme. For the default backend theme of WebsiteBaker 2.8.3, the file is found at */templates/wb_theme/templates/header.htt*. Open the file with the [cwsoft-addon-file-editor](https://github.com/cwsoft/wb-addon-file-editor#readme) and search for the following lines at the top of the file.
+If you want to show Postits also in the backend part of WebsiteBaker, you need to modify the template file ***header.htt*** of your backend theme. For the default backend theme of WebsiteBaker 2.8.3, the file is found at */templates/wb_theme/templates/header.htt*. Open the file with the [cwsoft-addon-file-editor](https://github.com/cwsoft/wb-cwsoft-addon-file-editor#readme) and search for the following lines at the top of the file.
 
 	<script src="{WB_URL}/include/jquery/jquery-min.js" type="text/javascript"></script>
 	<script src="{WB_URL}/include/jquery/jquery-insert.js" type="text/javascript"></script>
@@ -76,16 +76,16 @@ A screenshot of the backend and frontend view of the cwsoft-postits module is sh
 
 ***Backend view:***
 
-![](https://github.com/cwsoft/wb-postits/raw/master/.screenshots/cwsoft-postits-backend-view.png) 
+![](https://github.com/cwsoft/wb-cwsoft-postits/raw/master/.screenshots/cwsoft-postits-backend-view.png) 
 
 ***Frontend view:***
 
-![](https://github.com/cwsoft/wb-postits/raw/master/.screenshots/cwsoft-postits-frontend-view.png) 
+![](https://github.com/cwsoft/wb-cwsoft-postits/raw/master/.screenshots/cwsoft-postits-frontend-view.png) 
 
 ***Note:*** Postits only appear in the frontend/backend of Website Baker, if the PostIt recipient is loged in. The Postits can be moved with the mouse and deleted by clicking the (x) icon in the top right Postits corner.
 
 ## Known Issues
-You can track the status of known issues or report new issues found in `cwsoft-postits` via GitHubs [issue tracking service](https://github.com/cwsoft/wb-postits/issues). If you run into any issues with Postits, please visit this page first and check if this issue is already known.
+You can track the status of known issues or report new issues found in `cwsoft-postits` via GitHubs [issue tracking service](https://github.com/cwsoft/wb-cwsoft-postits/issues). If you run into any issues with Postits, please visit this page first and check if this issue is already known.
 
 ## Questions
 If you have questions or issues with the `cwsoft-postits` module, please visit the [English](http://www.websitebaker2.org/forum/index.php/topic,4548.msg157963.html#msg157963) or [German](http://www.websitebaker2.org/forum/index.php/topic,13124.msg157962.html#msg157962) WebsiteBaker forum support threads and ask for feedback.
