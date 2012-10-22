@@ -88,7 +88,7 @@ A screenshot of the backend and frontend view of the cwsoft-postits module is sh
 You can track the status of known issues or report new issues found in `cwsoft-postits` via GitHubs [issue tracking service](https://github.com/cwsoft/wb-cwsoft-postits/issues). If you run into any issues with Postits, please visit this page first and check if this issue is already known.
 
 ## Questions
-If you have questions or issues with the `cwsoft-postits` module, please visit the [English](http://www.websitebaker2.org/forum/index.php/topic,4548.msg157963.html#msg157963) or [German](http://www.websitebaker2.org/forum/index.php/topic,13124.msg157962.html#msg157962) WebsiteBaker forum support threads and ask for feedback.
+If you have questions or issues with the `cwsoft-postits` module, please visit the [English](http://www.websitebaker2.org/forum/index.php/topic,24901.0.html) or [German](http://www.websitebaker2.org/forum/index.php/topic,24897.0.html) WebsiteBaker forum support threads and ask for feedback.
 
 ***Always provide the following information with your support request:***
 
