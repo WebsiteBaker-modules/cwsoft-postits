@@ -13,7 +13,7 @@ The `cwsoft-postits` module is licensed under the [GNU General Public License (G
 The minimum requirements to get `cwsoft-postits` running are as follows:
 
 - WebsiteBaker ***2.8.2*** or higher (recommended last stable 2.8.x version)
-- PHP ***5.2.2*** or higher (recommended last stable PHP 5.3.x version)
+- PHP ***5.2.2*** or higher (recommended last stable PHP 5.4.x version)
 - small modification of your frontend template (optional backend template)
 - your browser must have JavaScript enabled
 
