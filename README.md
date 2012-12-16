@@ -1,9 +1,10 @@
 # cwsoft-postits module for CMS WebsiteBaker 2.8.x
-
 The `cwsoft-postits` module allows logged in users to send short text messages (150 characters) to other users or groups via the [WebsiteBaker CMS](http://www.websitebaker2.org) frontend or backend. The Postits (sticky notes) are automatically faded into the frontend and/or backend view, once the recipient has logged into WebsiteBaker, no matter which page is displayed in the browser. The sender can check whether his note was already read by the recipient.
 
 ## Download
-The released stable `cwsoft-postits` installation packages for the WebsiteBaker CMS can be found in the [GitHub download area](https://github.com/cwsoft/wb-cwsoft-postits/downloads). It is recommended to install/update to the latest available version listed. Older versions are provided for compatibility reasons with older WebsiteBaker versions and may contain bugs or security issues. The development history of the Postits module can be tracked via [GitHub](https://github.com/cwsoft/wb-cwsoft-postits).
+You can download an archive of the latest development branch of the `cwsoft-postits` module using GitHubs [ZIP button](https://github.com/cwsoft/wb-cwsoft-postits/archive/master.zip). The archives of previous module releases can be found in GitHubs [Tags section](https://github.com/cwsoft/wb-cwsoft-postits/tags). The development history is tracked via [GitHub](https://github.com/cwsoft/wb-cwsoft-postits/commits/master).
+
+***Please note: ****The archives downloaded from GitHub are not ready for installation in WebsiteBaker, as GitHub includes the archive subfolder. To create a working WebsiteBaker installation archive, unpack the downloaded archive on your local computer and zip the contents of the folder ***cwsoft-postits*** (without the folder itself). Alternatively you can download an installable archive from the [WebsiteBaker module section](http://addons.websitebaker2.org/pages/en/browse-add-ons.php).
 
 ## License
 The `cwsoft-postits` module is licensed under the [GNU General Public License (GPL) v3.0](http://www.gnu.org/licenses/gpl-3.0.html).
@@ -18,13 +19,13 @@ The minimum requirements to get `cwsoft-postits` running are as follows:
 - your browser must have JavaScript enabled
 
 ## Installation
-
-1. download [cwsoft-postits v1.8.0](https://github.com/downloads/cwsoft/wb-cwsoft-postits/cwsoft-postits-v1.8.0.zip) WebsiteBaker installation package
-2. log into your WebsiteBaker backend and go to the `Add-ons/Modules` section
-3. install the downloaded zip archive via the WebsiteBaker installer
-4. go to the pages section and create a new page of type `cwsoft-postits`
-5. select your username from the users group and enter a short Postit message
-6. press the "Submit Postit" button to send the Postit
+1. download latest [module archive](https://github.com/cwsoft/wb-cwsoft-postits/archive/master.zip) from GitHub
+2. unpack the archive on your local computer
+3. zip the contents of the folder ***cwsoft-postits*** (without the folder itself)
+4. install the newly zipped archive via the WebsiteBaker installer
+5. go to the pages section and create a new page of type `cwsoft-postits`
+6. select your username from the users group and enter a short Postit message
+7. press the "Submit Postit" button to send the Postit
 
 ### Frontend template modifications (OBLIGATORY)
 
