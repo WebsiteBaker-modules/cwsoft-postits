@@ -4,7 +4,7 @@ The `cwsoft-postits` module allows logged in users to send short text messages (
 ## Download
 You can download an archive of the latest development branch of the `cwsoft-postits` module using GitHubs [ZIP button](https://github.com/cwsoft/wb-cwsoft-postits/archive/master.zip). The archives of previous module releases can be found in GitHubs [Tags section](https://github.com/cwsoft/wb-cwsoft-postits/tags). The development history is tracked via [GitHub](https://github.com/cwsoft/wb-cwsoft-postits/commits/master).
 
-***Please note: ***The archives downloaded from GitHub are not ready for installation in WebsiteBaker, as GitHub includes the archive subfolder. To create a working WebsiteBaker installation archive, unpack the downloaded archive on your local computer and zip the contents of the folder ***cwsoft-postits*** (without the folder itself). Alternatively download an installable archive from the WebsiteBaker [module section](http://addons.websitebaker2.org/pages/en/browse-add-ons.php).
+***Please note:*** The archives downloaded from GitHub are not ready for installation in WebsiteBaker, as GitHub includes the archive subfolder. To create a working WebsiteBaker installation archive, unpack the downloaded archive on your local computer and zip the contents of the folder ***cwsoft-postits*** (without the folder itself). Alternatively download an installable archive from the WebsiteBaker [module section](http://addons.websitebaker2.org/pages/en/browse-add-ons.php).
 
 ## License
 The `cwsoft-postits` module is licensed under the [GNU General Public License (GPL) v3.0](http://www.gnu.org/licenses/gpl-3.0.html).
@@ -77,11 +77,11 @@ A screenshot of the backend and frontend view of the cwsoft-postits module is sh
 
 ***Backend view:***
 
-![](https://github.com/cwsoft/wb-cwsoft-postits/raw/master/.screenshots/cwsoft-postits-backend-view.png) 
+![](.screenshots/cwsoft-postits-backend-view.png) 
 
 ***Frontend view:***
 
-![](https://github.com/cwsoft/wb-cwsoft-postits/raw/master/.screenshots/cwsoft-postits-frontend-view.png) 
+![](.screenshots/cwsoft-postits-frontend-view.png) 
 
 ***Note:*** Postits only appear in the frontend/backend of Website Baker, if the PostIt recipient is loged in. The Postits can be moved with the mouse and deleted by clicking the (x) icon in the top right Postits corner.
 
