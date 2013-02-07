@@ -77,11 +77,11 @@ A screenshot of the backend and frontend view of the cwsoft-postits module is sh
 
 ***Backend view:***
 
-![](.screenshots/cwsoft-postits-backend-view.png) 
+![](docs/cwsoft-postits-backend-view.png) 
 
 ***Frontend view:***
 
-![](.screenshots/cwsoft-postits-frontend-view.png) 
+![](docs/cwsoft-postits-frontend-view.png) 
 
 ***Note:*** Postits only appear in the frontend/backend of Website Baker, if the PostIt recipient is loged in. The Postits can be moved with the mouse and deleted by clicking the (x) icon in the top right Postits corner.
 
