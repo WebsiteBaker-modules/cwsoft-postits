@@ -103,4 +103,7 @@ If you have questions or issues with the `cwsoft-postits` module, please visit t
  - information about changes you made to WebsiteBaker (if any)
 
 ## Credits
-Credits goes to the forum user [Marcus70](http://www.websitebaker2.org/forum/index.php?action=profile;u=12071) for maintaining cwsoft-postits from April to September 2009 and to the user [marmot](http://www.websitebaker2.org/forum/index.php?action=profile;u=19102) for providing some compatibility fixes for newer jQuery versions.
+Credits go to the following WebsiteBaker community members:
+
+- [Marcus70](http://www.websitebaker2.org/forum/index.php?action=profile;u=12071): maintenance/support (April 2009 to September 2009)
+- [marmot](http://www.websitebaker2.org/forum/index.php?action=profile;u=19102): jQuery compatibility fixes
