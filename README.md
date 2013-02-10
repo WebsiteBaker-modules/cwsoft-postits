@@ -19,7 +19,7 @@ The minimum requirements to get `cwsoft-postits` running are as follows:
 - your browser must have JavaScript enabled
 
 ## Installation
-1. download latest [module archive](https://github.com/cwsoft/wb-cwsoft-postits/archive/master.zip) from GitHub
+1. download archive from [GitHub](https://github.com/cwsoft/wb-cwsoft-postits/archive/master.zip) or [WB repository](http://addons.websitebaker2.org/pages/en/browse-add-ons.php?id=06DEAED) (steps 2-3 only needed for GitHub archive)
 2. unpack the archive on your local computer
 3. zip the contents of the folder ***cwsoft-postits*** (without the folder itself)
 4. install the newly zipped archive via the WebsiteBaker installer
