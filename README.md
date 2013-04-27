@@ -83,7 +83,7 @@ A screenshot of the backend and frontend view of the cwsoft-postits module is sh
 
 ![](docs/cwsoft-postits-frontend-view.png) 
 
-***Note:*** Postits only appear in the frontend/backend of Website Baker, if the PostIt recipient is loged in. The Postits can be moved with the mouse and deleted by clicking the (x) icon in the top right Postits corner.
+***Note:*** Postits only appear in the frontend/backend of WebsiteBaker, if the PostIt recipient is loged in. The Postits can be moved with the mouse and deleted by clicking the (x) icon in the top right Postits corner.
 
 ## Known Issues
 You can track the status of known issues or report new issues found in `cwsoft-postits` via GitHubs [issue tracking service](https://github.com/cwsoft/wb-cwsoft-postits/issues). If you run into any issues with Postits, please visit this page first and check if this issue is already known.
