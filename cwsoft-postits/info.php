@@ -20,7 +20,7 @@
 $module_directory      = 'cwsoft-postits';
 $module_name           = 'cwsoft-postits';
 $module_function       = 'page';
-$module_version        = '1.9.0';
+$module_version        = '1.9.1';
 $module_status         = 'STABLE';
 $module_platform       = '2.8.x';
 $module_author         = 'cwsoft (http://cwsoft.de)';
