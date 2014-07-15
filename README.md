@@ -1,10 +1,10 @@
 # cwsoft-postits module for CMS WebsiteBaker 2.8.x
-The `cwsoft-postits` module allows logged in users to send short text messages (150 characters) to other users or groups via the [WebsiteBaker CMS](http://www.websitebaker2.org) frontend or backend. The Postits (sticky notes) are automatically faded into the frontend and/or backend view, once the recipient has logged into WebsiteBaker, no matter which page is displayed in the browser. The sender can check whether his note was already read by the recipient.
+The `cwsoft-postits` module allows logged in users to send short text messages (150 characters) to other users or groups via the [WebsiteBaker CMS](http://www.websitebaker.org) frontend or backend. The Postits (sticky notes) are automatically faded into the frontend and/or backend view, once the recipient has logged into WebsiteBaker, no matter which page is displayed in the browser. The sender can check whether his note was already read by the recipient.
 
 ## Download
 You can download an archive of the latest development branch of the `cwsoft-postits` module using GitHubs [ZIP button](https://github.com/cwsoft/wb-cwsoft-postits/archive/master.zip). The archives of previous module releases can be found in GitHubs [Tags section](https://github.com/cwsoft/wb-cwsoft-postits/tags). The development history is tracked via [GitHub](https://github.com/cwsoft/wb-cwsoft-postits/commits/master).
 
-***Please note:*** The archives downloaded from GitHub are not ready for installation in WebsiteBaker, as GitHub includes the archive subfolder. To create a working WebsiteBaker installation archive, unpack the downloaded archive on your local computer and zip the contents of the folder ***cwsoft-postits*** (without the folder itself). Alternatively download an installable archive from the WebsiteBaker [module section](http://addons.websitebaker2.org/pages/en/browse-add-ons.php).
+***Please note:*** The archives downloaded from GitHub are not ready for installation in WebsiteBaker, as GitHub includes the archive subfolder. To create a working WebsiteBaker installation archive, unpack the downloaded archive on your local computer and zip the contents of the folder ***cwsoft-postits*** (without the folder itself). Alternatively download an installable archive from the WebsiteBaker [module section](http://addons.websitebaker.org/pages/en/browse-add-ons.php).
 
 ## License
 The `cwsoft-postits` module is licensed under the [GNU General Public License (GPL) v3.0](http://www.gnu.org/licenses/gpl-3.0.html).
@@ -19,7 +19,7 @@ The minimum requirements to get `cwsoft-postits` running are as follows:
 - your browser must have JavaScript enabled
 
 ## Installation
-1. download archive from [GitHub](https://github.com/cwsoft/wb-cwsoft-postits/archive/master.zip) or [WB repository](http://addons.websitebaker2.org/pages/en/browse-add-ons.php?id=06DEAED) (steps 2-3 only needed for GitHub archive)
+1. download archive from [GitHub](https://github.com/cwsoft/wb-cwsoft-postits/archive/master.zip) or [WB repository](http://addons.websitebaker.org/pages/en/browse-add-ons.php?id=06DEAED) (steps 2-3 only needed for GitHub archive)
 2. unpack the archive on your local computer
 3. zip the contents of the folder ***cwsoft-postits*** (without the folder itself)
 4. install the newly zipped archive via the WebsiteBaker installer
@@ -89,7 +89,7 @@ A screenshot of the backend and frontend view of the cwsoft-postits module is sh
 You can track the status of known issues or report new issues found in `cwsoft-postits` via GitHubs [issue tracking service](https://github.com/cwsoft/wb-cwsoft-postits/issues). If you run into any issues with Postits, please visit this page first and check if this issue is already known.
 
 ## Questions
-If you have questions or issues with the `cwsoft-postits` module, please visit the [English](http://www.websitebaker2.org/forum/index.php/topic,24901.0.html) or [German](http://www.websitebaker2.org/forum/index.php/topic,24897.0.html) WebsiteBaker forum support threads and ask for feedback.
+If you have questions or issues with the `cwsoft-postits` module, please visit the [English](http://www.websitebaker.org/forum/index.php/topic,24901.0.html) or [German](http://www.websitebaker.org/forum/index.php/topic,24897.0.html) WebsiteBaker forum support threads and ask for feedback.
 
 ***Always provide the following information with your support request:***
 
@@ -105,5 +105,5 @@ If you have questions or issues with the `cwsoft-postits` module, please visit t
 ## Credits
 Credits go to the following WebsiteBaker community members:
 
-- [Marcus70](http://www.websitebaker2.org/forum/index.php?action=profile;u=12071): maintenance/support (April 2009 to September 2009)
-- [marmot](http://www.websitebaker2.org/forum/index.php?action=profile;u=19102): jQuery compatibility fixes
+- [Marcus70](http://www.websitebaker.org/forum/index.php?action=profile;u=12071): maintenance/support (April 2009 to September 2009)
+- [marmot](http://www.websitebaker.org/forum/index.php?action=profile;u=19102): jQuery compatibility fixes
