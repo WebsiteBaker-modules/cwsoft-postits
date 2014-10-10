@@ -42,12 +42,12 @@ function getTemplateData()
 	$data['postits']['VERSION'] = 'v' . $module_version;
 	
 	// obtain Url to the GitHub README for the installed cwsoft-postits version
-	$data['postits']['HELP_URL'] = 'https://github.com/cwsoft/wb-cwsoft-postits/#readme';
+	$data['postits']['HELP_URL'] = 'https://github.com/cwsoft/websitebaker-postits/#readme';
 	
 	if (preg_match('#(v\d*\.\d*\.\d*)(.*)#i', $data['postits']['VERSION'], $match)) {
 		// only stable versions (vX.Y.Z) are tagged at GitHub
 		if (! $match[2]) {
-			$data['postits']['HELP_URL'] = 'https://github.com/cwsoft/wb-cwsoft-postits/tree/' . $match[1] . '#readme';
+			$data['postits']['HELP_URL'] = 'https://github.com/cwsoft/websitebaker-postits/tree/' . $match[1] . '#readme';
 		}
 	}	
 	

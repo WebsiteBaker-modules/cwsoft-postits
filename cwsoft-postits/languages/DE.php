@@ -23,7 +23,7 @@ if (defined('WB_PATH') == false) {
 }
 
 // German module description
-$module_description = 'Modul zum Verschicken von Kurznachrichten (Postits) an andere Benutzer oder Gruppen. Weitere Infos auf <a href="https://github.com/cwsoft/wb-cwsoft-postits#readme" target="_blank">GitHub</a>.';
+$module_description = 'Modul zum Verschicken von Kurznachrichten (Postits) an andere Benutzer oder Gruppen. Weitere Infos auf <a href="https://github.com/cwsoft/websitebaker-postits#readme" target="_blank">GitHub</a>.';
 
 // initialize global $LANG variable as array if needed
 global $LANG;
