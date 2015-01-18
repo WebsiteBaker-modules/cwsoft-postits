@@ -51,14 +51,16 @@ $results = $database->query($sql);
 if (!$results) return false;
 
 // extract all messages and convert to JSON object string
-$json_postit = '';
+$json_postit = array();
 while ($row = $results->fetchRow()) {
 	// create JSON object string
-	$json_postit .= '{'
-	. '"id": "' . $row['id'] . '", "message": "' . strip_tags($row['message'], '<br>')
-	. '", "sender": "' . htmlentities($row['sender_name']) . '<br />' . date(sprintf("%s (%s)", DATE_FORMAT, TIME_FORMAT), $row['posted_when'] + (int) TIMEZONE)
-	. '"}, ';
+	$json_postit["Data"][] = array(
+		"id" => $row['id'],
+		"message" => strip_tags($row['message'], '<br>'),
+		"sender" => htmlentities($row['sender_name']) . '<br />' .
+			date(sprintf("%s (%s)", DATE_FORMAT, TIME_FORMAT), $row['posted_when'] + (int) TIMEZONE),
+	);
 }
 
 // output JSON object string
-echo '{"Data": [' . substr($json_postit, 0, -2) . ']}';
+echo json_encode($json_postit);
