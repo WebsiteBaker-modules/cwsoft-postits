@@ -49,7 +49,6 @@ $LANG['POSTITS'] = array(
 	'TXT_SUBMIT_POSTITS'    => 'Submit new Postits',
 	'TXT_MESSAGE'           => 'Message',
 	'TXT_SUBMITTED_WHEN'    => 'Submitted',
-	'TXT_PLEASE_SELECT'     => 'Please select ...',
 	'TXT_SUBMIT'            => 'Submit Postits',
 	'TXT_REMAINING_CHARS'   => 'Remaining characters',
 	
