@@ -1,4 +1,9 @@
 # cwsoft-postits module for CMS WebsiteBaker 2.8.x
+**PLEASE NOTE:**
+This repository is no longer actively maintained by myself. As the code is licensed under GNU GPL, feel free to fork this repository and change it to your liking.
+Have fun and don't forget to contribute back to [WebsiteBaker CMS](http://websitebaker.org).
+
+----------------------------------------
 The `cwsoft-postits` module allows logged in users to send short text messages (150 characters) to other users or groups via the [WebsiteBaker CMS](http://www.websitebaker.org) frontend or backend. The Postits (sticky notes) are automatically faded into the frontend and/or backend view, once the recipient has logged into WebsiteBaker, no matter which page is displayed in the browser. The sender can check whether his note was already read by the recipient.
 
 ## Download
